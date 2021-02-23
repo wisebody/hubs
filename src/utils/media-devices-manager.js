@@ -218,6 +218,7 @@ export default class MediaDevicesManager {
   _muteStateChanged() {
     if (this._audioTrack && this._audioTrack.muted) {
       if (!this.reconnectIfUnmuted) {
+        this.wasMicEnabledBeforeMute = NAF.connection.adapter.micEnabled;
         NAF.connection.adapter.enableMicrophone(false);
       }
       this.reconnectIfUnmuted = true;
@@ -225,7 +226,9 @@ export default class MediaDevicesManager {
       if (this.reconnectIfUnmuted) {
         this.reconnectIfUnmuted = false;
         this.setMediaStreamToDefault();
-        NAF.connection.adapter.enableMicrophone(true);
+        if (this.wasMicEnabledBeforeMute) {
+          NAF.connection.adapter.enableMicrophone(true);
+        }
       }
     }
   }

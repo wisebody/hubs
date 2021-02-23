@@ -902,6 +902,10 @@ export default class DialogAdapter {
     });
   }
 
+  get micEnabled() {
+    return this._micEnabled;
+  }
+
   setWebRtcOptions() {
     // Not implemented
   }
