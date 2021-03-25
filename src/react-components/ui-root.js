@@ -140,7 +140,6 @@ class UIRoot extends Component {
     initialIsFavorited: PropTypes.bool,
     showSignInDialog: PropTypes.bool,
     signInMessage: PropTypes.string,
-    signInCompleteMessage: PropTypes.string,
     onContinueAfterSignIn: PropTypes.func,
     showSafariMicDialog: PropTypes.bool,
     onMediaSearchResultEntrySelected: PropTypes.func,
@@ -373,7 +372,7 @@ class UIRoot extends Component {
   };
 
   showContextualSignInDialog = () => {
-    const { signInMessage, authChannel, signInCompleteMessage, onContinueAfterSignIn } = this.props;
+    const { signInMessage, authChannel, onContinueAfterSignIn } = this.props;
 
     this.showNonHistoriedDialog(RoomSignInModalContainer, {
       step: SignInStep.submit,
@@ -391,7 +390,6 @@ class UIRoot extends Component {
         this.setState({ signedIn: true });
         this.showNonHistoriedDialog(RoomSignInModalContainer, {
           step: SignInStep.complete,
-          message: signInCompleteMessage,
           onClose: onContinueAfterSignIn || this.closeDialog,
           onContinue: onContinueAfterSignIn || this.closeDialog
         });
