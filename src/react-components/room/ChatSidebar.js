@@ -47,7 +47,7 @@ export function ChatInput(props) {
   return (
     <div className={styles.chatInputContainer}>
       <TextAreaInput
-        placeholder={intl.formatMessage({ id: "chat-sidebar.input.placeholder", defaultMessage: "Message..." })}
+        placeholder={intl.formatMessage({ id: "chat-sidebar.input.placeholder", defaultMessage: "메세지..." })}
         {...props}
       />
     </div>
@@ -59,13 +59,13 @@ ChatInput.propTypes = {
 };
 
 const enteredMessages = defineMessages({
-  room: { id: "chat-sidebar.system-message.entered-room", defaultMessage: "{name} entered the room." },
-  lobby: { id: "chat-sidebar.system-message.entered-lobby", defaultMessage: "{name} entered the lobby." }
+  room: { id: "chat-sidebar.system-message.entered-room", defaultMessage: "{name} 님이 방에 입장하였습니다." },
+  lobby: { id: "chat-sidebar.system-message.entered-lobby", defaultMessage: "{name} 님이 로비에 입장하였습니다." }
 });
 
 const joinedMessages = defineMessages({
-  lobby: { id: "chat-sidebar.system-message.joined-lobby", defaultMessage: "{name} joined the lobby." },
-  room: { id: "chat-sidebar.system-message.joined-room", defaultMessage: "{name} joined the room." }
+  lobby: { id: "chat-sidebar.system-message.joined-lobby", defaultMessage: "{name} 님이 로비에 참가했습니다." },
+  room: { id: "chat-sidebar.system-message.joined-room", defaultMessage: "{name} 님이 방에 참가했습니다." }
 });
 
 export const LogMessageType = {
@@ -171,7 +171,7 @@ export function formatSystemMessage(entry, intl) {
       return (
         <FormattedMessage
           id="chat-sidebar.system-message.leave"
-          defaultMessage="{name} left."
+          defaultMessage="{name} 님이 떠났습니다."
           values={{ name: <b>{entry.name}</b> }}
         />
       );
@@ -179,7 +179,7 @@ export function formatSystemMessage(entry, intl) {
       return (
         <FormattedMessage
           id="chat-sidebar.system-message.name-change"
-          defaultMessage="{oldName} is now known as {newName}"
+          defaultMessage="{oldName} 님이 {newName} 님으로 변경했습니다."
           values={{ oldName: <b>{entry.oldName}</b>, newName: <b>{entry.newName}</b> }}
         />
       );
@@ -187,7 +187,7 @@ export function formatSystemMessage(entry, intl) {
       return (
         <FormattedMessage
           id="chat-sidebar.system-message.scene-change"
-          defaultMessage="{name} changed the scene to {sceneName}"
+          defaultMessage="{name} 님이 장면을 {sceneName} 으로 변경했습니다."
           values={{ name: <b>{entry.name}</b>, sceneName: <b>{entry.sceneName}</b> }}
         />
       );
@@ -195,7 +195,7 @@ export function formatSystemMessage(entry, intl) {
       return (
         <FormattedMessage
           id="chat-sidebar.system-message.hub-name-change"
-          defaultMessage="{name} changed the name of the room to {hubName}"
+          defaultMessage="{name} 님이 방 이름 {hubName} 으로 변경했습니다."
           values={{ name: <b>{entry.name}</b>, hubName: <b>{entry.hubName}</b> }}
         />
       );
@@ -305,7 +305,7 @@ ChatMessageList.propTypes = {
 export function ChatSidebar({ onClose, children, ...rest }) {
   return (
     <Sidebar
-      title={<FormattedMessage id="chat-sidebar.title" defaultMessage="Chat" />}
+      title={<FormattedMessage id="chat-sidebar.title" defaultMessage="대화" />}
       beforeTitle={<CloseButton onClick={onClose} />}
       contentClassName={styles.content}
       {...rest}
@@ -328,7 +328,7 @@ export function ChatToolbarButton(props) {
       {...props}
       icon={<ChatIcon />}
       preset="blue"
-      label={<FormattedMessage id="chat-toolbar-button" defaultMessage="Chat" />}
+      label={<FormattedMessage id="chat-toolbar-button" defaultMessage="대화" />}
     />
   );
 }

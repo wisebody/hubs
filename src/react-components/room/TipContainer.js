@@ -24,46 +24,49 @@ if (window.navigator.keyboard !== undefined && window.navigator.keyboard.getLayo
 const onboardingMessages = defineMessages({
   "tips.mobile.look": {
     id: "tips.mobile.look",
-    defaultMessage: "Welcome! 👋 Tap and drag to look around."
+    defaultMessage: "환영합니다! 화면 터치를 통해 둘러볼 수 있습니다."
   },
   "tips.mobile.locomotion": {
     id: "tips.mobile.locomotion",
-    defaultMessage: "Great! To move, pinch with two fingers."
+    defaultMessage: "두 손가락을 사용하여 이동할 수 있습니다."
   },
   "tips.mobile.invite": {
     id: "tips.mobile.invite",
-    defaultMessage: "Use the Invite button in the bottom left to share this room."
+    defaultMessage: "이 방을 다른 사람에게 알리려면 왼쪽 하단에 있는 초대 버튼을 사용하세요."
   },
   "tips.desktop.look": {
     id: "tips.desktop.look",
-    defaultMessage: "Welcome to {appName}! Let's take a quick tour. 👋 Click and drag to look around."
+    defaultMessage: "{appName} 에 접속하신 것을 환영합니다."
   },
   "tips.desktop.locomotion": {
     id: "tips.desktop.locomotion",
-    defaultMessage: "Use the {moveKeys} keys to move. Hold shift to boost."
+    defaultMessage: "{moveKeys} 키를 사용해서 이동하세요. 쉬프트키를 누르시면 빠른 이동이 가능합니다."
   },
   "tips.desktop.turning": {
     id: "tips.desktop.turning",
-    defaultMessage: "Perfect. Use the {turnLeftKey} and {turnRightKey} keys to rotate."
+    defaultMessage: "{turnLeftKey} 왼쪽 방향 전환, {turnRightKey} 오른쪽 방향 전환 합니다."
   },
   "tips.desktop.invite": {
     id: "tips.desktop.invite",
-    defaultMessage: "Nobody else is here. Use the invite button in the bottom left to share this room."
+    defaultMessage: "이 방에는 아무도 없습니다."
   }
 });
 
 function OkDismissLabel() {
-  return <FormattedMessage id="tips.dismiss.ok" defaultMessage="Ok" />;
+  return <FormattedMessage id="tips.dismiss.ok" defaultMessage="확인" />;
 }
 
 function SkipDismissLabel() {
-  return <FormattedMessage id="tips.dismiss.skip" defaultMessage="Skip" />;
+  return <FormattedMessage id="tips.dismiss.skip" defaultMessage="건너뛰기" />;
 }
 
 export function FullscreenTip(props) {
   return (
     <Tip {...props} dismissLabel={<OkDismissLabel />}>
-      <FormattedMessage id="tips.fullscreen" defaultMessage="Entered fullscreen mode. Press Escape to show UI." />
+      <FormattedMessage
+        id="tips.fullscreen"
+        defaultMessage="전체화면 모드로 접속했습니다. ESC 키를 누르시면 메뉴가 표시됩니다."
+      />
     </Tip>
   );
 }
@@ -114,7 +117,10 @@ export function TipContainer({ hide, inLobby, inRoom, isStreaming, isEmbedded, s
 
     return (
       <Tip onDismiss={() => setLobbyTipDismissed(true)} dismissLabel={<OkDismissLabel />}>
-        <FormattedMessage id="tips.lobby" defaultMessage="You're in the lobby. Others cannot see or hear you." />
+        <FormattedMessage
+          id="tips.lobby"
+          defaultMessage="로비에 접속했습니다. 다른 사람과 대화를 하거나 다른 사람을 볼 수 없습니다."
+        />
       </Tip>
     );
   } else if (inRoom) {
@@ -134,10 +140,7 @@ export function TipContainer({ hide, inLobby, inRoom, isStreaming, isEmbedded, s
     if (isStreaming && !streamingTipDismissed) {
       return (
         <Tip onDismiss={() => setStreamingTipDismissed(true)} dismissLabel={<OkDismissLabel />}>
-          <FormattedMessage
-            id="tips.streaming"
-            defaultMessage="Now broadcasting to the lobby. Exit streamer mode in the more menu when you're done."
-          />
+          <FormattedMessage id="tips.streaming" defaultMessage="로비로 스트리밍 중입니다." />
         </Tip>
       );
     }
@@ -147,7 +150,7 @@ export function TipContainer({ hide, inLobby, inRoom, isStreaming, isEmbedded, s
         <Tip onDismiss={() => setBroadcastTipDismissed(true)} dismissLabel={<OkDismissLabel />}>
           <FormattedMessage
             id="tips.discord"
-            defaultMessage="Chat in this room is being bridged to {broadcastTarget} on Discord."
+            defaultMessage="이 방의 대화는 디스코드로 연결됩니다. {broadcastTarget}"
             values={{ broadcastTarget: discordBridges.map(channelName => "#" + channelName).join(", ") }}
           />
         </Tip>
@@ -159,7 +162,7 @@ export function TipContainer({ hide, inLobby, inRoom, isStreaming, isEmbedded, s
         <Tip onDismiss={() => setEmbeddedTipDismissed(true)} dismissLabel={<OkDismissLabel />}>
           <FormattedMessage
             id="tips.embedded"
-            defaultMessage="This room is embedded, so it may be visible to visitors on other websites."
+            defaultMessage="이 방은 공개되어 있습니다. 다른 웹사이트 방문자가 볼 수 있습니다."
           />
         </Tip>
       );

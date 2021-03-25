@@ -23,7 +23,7 @@ export function EnterOnDeviceModal({
 
   return (
     <Modal
-      title={<FormattedMessage id="enter-on-device-modal.title" defaultMessage="Enter on Device" />}
+      title={<FormattedMessage id="enter-on-device-modal.title" defaultMessage="이 기기로 입장" />}
       beforeTitle={<BackButton onClick={onBack} />}
       className={className}
       {...rest}
@@ -31,25 +31,22 @@ export function EnterOnDeviceModal({
       <Column center={loadingCode ? "both" : true} padding grow>
         {loadingCode ? (
           <b>
-            <FormattedMessage id="enter-on-device-modal.generating-code" defaultMessage="Generating join code..." />
+            <FormattedMessage id="enter-on-device-modal.generating-code" defaultMessage="입장 코드..." />
           </b>
         ) : (
           <>
             <b>
-              <FormattedMessage id="enter-on-device-modal.heading" defaultMessage="Enter on Wireless Headset / Phone" />
+              <FormattedMessage id="enter-on-device-modal.heading" defaultMessage="무선 헤드셋으로 입장" />
             </b>
             <small>
               <FormattedMessage
                 id="enter-on-device-modal.short-url-directions"
-                defaultMessage="In your device's web browser, go to:"
+                defaultMessage="다음 위치로 이동합니다:"
               />
             </small>
             <div className={styles.shortUrlContainer}>{shortUrl}</div>
             <small>
-              <FormattedMessage
-                id="enter-on-device-modal.code-directions"
-                defaultMessage="Then, enter this one-time code:"
-              />
+              <FormattedMessage id="enter-on-device-modal.code-directions" defaultMessage="일회성 코드 입력:" />
             </small>
             <div className={styles.codeContainer}>
               {code.split("").map((char, i) => (
@@ -61,24 +58,27 @@ export function EnterOnDeviceModal({
             <strong>
               <FormattedMessage
                 id="enter-on-device-modal.data-transfer"
-                defaultMessage="Your account and avatar will be transferred to the device."
+                defaultMessage="계정과 아바타가 기기로 전송됩니다."
               />
             </strong>
             <strong>
               <FormattedMessage
                 id="enter-on-device-modal.keep-page-open"
-                defaultMessage="Keep this page open to use this code."
+                defaultMessage="이 코드를 사용하려면 페이지를 열어두세요."
               />
             </strong>
             {headsetConnected && (
               <>
                 <hr
-                  data-or-text={intl.formatMessage({ id: "enter-on-device-modal.divider-label", defaultMessage: "or" })}
+                  data-or-text={intl.formatMessage({
+                    id: "enter-on-device-modal.divider-label",
+                    defaultMessage: "또는"
+                  })}
                 />
                 <b>
                   <FormattedMessage
                     id="enter-on-device-modal.headset-connected-heading"
-                    defaultMessage="Enter on Connected Headset"
+                    defaultMessage="연결된 헤드셋에 입력"
                   />
                 </b>
                 {unsupportedBrowser ? (
@@ -86,7 +86,7 @@ export function EnterOnDeviceModal({
                     <small>
                       <FormattedMessage
                         id="enter-on-device-modal.unsupported-browser"
-                        defaultMessage="WebVR isn't supported in this browser, to enter with Oculus or SteamVR, use Firefox."
+                        defaultMessage="이 브라우저는 WebVR이 지원되지 않습니다. 오큘러스 또는 스팀VR로 들어가려면 파이어폭스를 사용하세요."
                       />
                     </small>
                     <Button
@@ -99,7 +99,7 @@ export function EnterOnDeviceModal({
                       <span>
                         <FormattedMessage
                           id="enter-on-device-modal.download-firefox-button"
-                          defaultMessage="Download Firefox"
+                          defaultMessage="파이어폭스 다운로드"
                         />
                       </span>
                     </Button>
@@ -109,13 +109,13 @@ export function EnterOnDeviceModal({
                     <small>
                       <FormattedMessage
                         id="enter-on-device-modal.headset-connected-message"
-                        defaultMessage="You have a VR headset connected to this device."
+                        defaultMessage="이 기기에 연결된 VR 헤드셋이 있습니다."
                       />
                     </small>
                     <Button preset="purple" onClick={onEnterOnConnectedHeadset}>
                       <VRIcon />
                       <span>
-                        <FormattedMessage id="enter-on-device-modal.enter-in-vr-button" defaultMessage="Enter in VR" />
+                        <FormattedMessage id="enter-on-device-modal.enter-in-vr-button" defaultMessage="VR 입장" />
                       </span>
                     </Button>
                   </>

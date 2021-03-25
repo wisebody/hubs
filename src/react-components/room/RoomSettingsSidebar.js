@@ -51,7 +51,7 @@ export function RoomSettingsSidebar({
 
   return (
     <Sidebar
-      title={<FormattedMessage id="room-settings-sidebar.title" defaultMessage="Room Settings" />}
+      title={<FormattedMessage id="room-settings-sidebar.title" defaultMessage="방 설정" />}
       beforeTitle={showBackButton ? <BackButton onClick={onClose} /> : <CloseButton onClick={onClose} />}
     >
       <Column padding as="form" onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +72,7 @@ export function RoomSettingsSidebar({
           })}
           minLength={1}
           maxLength={64}
-          label={<FormattedMessage id="room-settings-sidebar.name" defaultMessage="Room Name" />}
+          label={<FormattedMessage id="room-settings-sidebar.name" defaultMessage="방 이름" />}
           ref={register}
           error={errors.name}
           fullWidth
@@ -84,7 +84,7 @@ export function RoomSettingsSidebar({
             id: "room-settings-sidebar.description-placeholder",
             defaultMessage: "Room Description"
           })}
-          label={<FormattedMessage id="room-settings-sidebar.description" defaultMessage="Room Description" />}
+          label={<FormattedMessage id="room-settings-sidebar.description" defaultMessage="방 설명" />}
           minRows={3}
           ref={register}
           error={errors.description}
@@ -99,23 +99,23 @@ export function RoomSettingsSidebar({
             id: "room-settings-sidebar.room-size-placeholder",
             defaultMessage: "Member Limit"
           })}
-          label={<FormattedMessage id="room-settings-sidebar.room-size" defaultMessage="Room Size" />}
+          label={<FormattedMessage id="room-settings-sidebar.room-size" defaultMessage="방 크기" />}
           ref={register}
           error={errors.room_size}
           fullWidth
         />
         <RadioInputField
-          label={<FormattedMessage id="room-settings-sidebar.room-access" defaultMessage="Room Access" />}
+          label={<FormattedMessage id="room-settings-sidebar.room-access" defaultMessage="방 접근" />}
           fullWidth
         >
           <RadioInputOption
             name="entry_mode"
             value="allow"
-            label={<FormattedMessage id="room-settings-sidebar.access-shared-link" defaultMessage="Shared link" />}
+            label={<FormattedMessage id="room-settings-sidebar.access-shared-link" defaultMessage="공유된 주소" />}
             description={
               <FormattedMessage
                 id="room-settings-sidebar.access-shared-link-description"
-                defaultMessage="Only those with the link can join"
+                defaultMessage="공유된 주소를 통해서만 입장이 가능합니다."
               />
             }
             ref={register}
@@ -124,11 +124,11 @@ export function RoomSettingsSidebar({
           <RadioInputOption
             name="entry_mode"
             value="invite"
-            label={<FormattedMessage id="room-settings-sidebar.access-invite" defaultMessage="Invite only" />}
+            label={<FormattedMessage id="room-settings-sidebar.access-invite" defaultMessage="오직 초대" />}
             description={
               <FormattedMessage
                 id="room-settings-sidebar.access-invite-description"
-                defaultMessage="Invite people with a link that can be revoked"
+                defaultMessage="사용자가 거부할 수 있는 주소로 초대"
               />
             }
             ref={register}
@@ -141,18 +141,13 @@ export function RoomSettingsSidebar({
         {showPublicRoomSetting && (
           <ToggleInput
             name="allow_promotion"
-            label={<FormattedMessage id="room-settings-sidebar.access-public" defaultMessage="Public" />}
-            description={
-              <FormattedMessage
-                id="room-settings-sidebar.access-public-description"
-                defaultMessage="Listed on the homepage"
-              />
-            }
+            label={<FormattedMessage id="room-settings-sidebar.access-public" defaultMessage="공개" />}
+            description={<FormattedMessage id="room-settings-sidebar.access-public-description" defaultMessage=" " />}
             ref={register}
           />
         )}
         <InputField
-          label={<FormattedMessage id="room-settings-sidebar.permissions" defaultMessage="Room Member Permissions" />}
+          label={<FormattedMessage id="room-settings-sidebar.permissions" defaultMessage="접속자 권한" />}
           fullWidth
         >
           <div className={styles.roomPermissions}>
@@ -161,7 +156,7 @@ export function RoomSettingsSidebar({
               label={
                 <FormattedMessage
                   id="room-settings-sidebar.spawn-and-move-media"
-                  defaultMessage="Create and move objects"
+                  defaultMessage="객체 생성 및 이동 허용"
                 />
               }
               ref={register}
@@ -169,30 +164,30 @@ export function RoomSettingsSidebar({
             <div className={styles.permissionsGroup}>
               <ToggleInput
                 name="member_permissions.spawn_camera"
-                label={<FormattedMessage id="room-settings-sidebar.spawn-camera" defaultMessage="Create cameras" />}
+                label={<FormattedMessage id="room-settings-sidebar.spawn-camera" defaultMessage="카메라 생성 허용" />}
                 ref={register}
                 disabled={!spawnAndMoveMedia}
               />
               <ToggleInput
                 name="member_permissions.pin_objects"
-                label={<FormattedMessage id="room-settings-sidebar.pin-objects" defaultMessage="Pin objects" />}
+                label={<FormattedMessage id="room-settings-sidebar.pin-objects" defaultMessage="객체 고정 허용" />}
                 ref={register}
                 disabled={!spawnAndMoveMedia}
               />
             </div>
             <ToggleInput
               name="member_permissions.spawn_drawing"
-              label={<FormattedMessage id="room-settings-sidebar.spawn-drawing" defaultMessage="Create drawings" />}
+              label={<FormattedMessage id="room-settings-sidebar.spawn-drawing" defaultMessage="이미지 생성 허용" />}
               ref={register}
             />
             <ToggleInput
               name="member_permissions.spawn_emoji"
-              label={<FormattedMessage id="room-settings-sidebar.spawn-emoji" defaultMessage="Create emoji" />}
+              label={<FormattedMessage id="room-settings-sidebar.spawn-emoji" defaultMessage="반응 허용" />}
               ref={register}
             />
             <ToggleInput
               name="member_permissions.fly"
-              label={<FormattedMessage id="room-settings-sidebar.fly" defaultMessage="Allow flying" />}
+              label={<FormattedMessage id="room-settings-sidebar.fly" defaultMessage="아바타 비행 허용" />}
               ref={register}
             />
           </div>

@@ -3,13 +3,13 @@ import { AVAILABLE_LOCALES, FALLBACK_LOCALES } from "../assets/locales/locale_co
 
 // These are set in the admin panel and are only included as fallbacks.
 const defaultLocaleData = {
-  "app-name": "App",
-  "editor-name": "Scene Editor",
-  "contact-email": "app@company.com",
-  "company-name": "Company",
+  "app-name": "VENTAVR",
+  "editor-name": "VENTAVR",
+  "contact-email": "staff@ventavr.com",
+  "company-name": "VENTAVR",
   "share-hashtag": "#app",
-  "app-description": "Share a virtual room with friends. Watch videos, play with 3D objects, or just hang out.",
-  "app-tagline": "Private social VR in your web browser"
+  "app-description": "VENTAVR",
+  "app-tagline": "VENTAVR"
 };
 
 const DEFAULT_LOCALE = "en";

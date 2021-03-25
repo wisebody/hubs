@@ -60,12 +60,7 @@ import { ReactComponent as FavoritesIcon } from "./icons/Favorites.svg";
 import { ReactComponent as StarOutlineIcon } from "./icons/StarOutline.svg";
 import { ReactComponent as StarIcon } from "./icons/Star.svg";
 import { ReactComponent as SettingsIcon } from "./icons/Settings.svg";
-import { ReactComponent as WarningCircleIcon } from "./icons/WarningCircle.svg";
 import { ReactComponent as HomeIcon } from "./icons/Home.svg";
-import { ReactComponent as TextDocumentIcon } from "./icons/TextDocument.svg";
-import { ReactComponent as SupportIcon } from "./icons/Support.svg";
-import { ReactComponent as ShieldIcon } from "./icons/Shield.svg";
-import { ReactComponent as DiscordIcon } from "./icons/Discord.svg";
 import { ReactComponent as VRIcon } from "./icons/VR.svg";
 import { ReactComponent as LeaveIcon } from "./icons/Leave.svg";
 import { ReactComponent as EnterIcon } from "./icons/Enter.svg";
@@ -295,13 +290,13 @@ class UIRoot extends Component {
     this.props.scene.addEventListener("exit", this.exitEventHandler);
     this.props.scene.addEventListener("action_exit_watch", () => {
       if (this.state.hide) {
-        this.setState({ hide: false, hideUITip: false });
+        this.setState({ hide: true, hideUITip: true });
       } else {
         this.setState({ watching: false });
       }
     });
     this.props.scene.addEventListener("action_toggle_ui", () =>
-      this.setState({ hide: !this.state.hide, hideUITip: false })
+      this.setState({ hide: !this.state.hide, hideUITip: true })
     );
     this.props.scene.addEventListener("devicechange", () => {
       this.forceUpdate();
@@ -759,7 +754,7 @@ class UIRoot extends Component {
     return (
       <div className={styles.interstitial} onClick={() => this.props.onInterstitialPromptClicked()}>
         <div>
-          <FormattedMessage id="ui-root.interstitial-prompt" defaultMessage="Continue" />
+          <FormattedMessage id="ui-root.interstitial-prompt" defaultMessage="계속하기" />
         </div>
       </div>
     );
@@ -1082,14 +1077,12 @@ class UIRoot extends Component {
     const moreMenu = [
       {
         id: "user",
-        label:
-          "You" +
-          (this.state.signedIn ? ` (Signed in as: ${maskEmail(this.props.store.state.credentials.email)})` : ""),
+        label: "Login" + (this.state.signedIn ? ` (${maskEmail(this.props.store.state.credentials.email)})` : ""),
         items: [
           this.state.signedIn
             ? {
                 id: "sign-out",
-                label: <FormattedMessage id="more-menu.sign-out" defaultMessage="Sign Out" />,
+                label: <FormattedMessage id="more-menu.sign-out" defaultMessage="로그아웃" />,
                 icon: LeaveIcon,
                 onClick: async () => {
                   await this.props.authChannel.signOut(this.props.hubChannel);
@@ -1098,13 +1091,13 @@ class UIRoot extends Component {
               }
             : {
                 id: "sign-in",
-                label: <FormattedMessage id="more-menu.sign-in" defaultMessage="Sign In" />,
+                label: <FormattedMessage id="more-menu.sign-in" defaultMessage="로그인" />,
                 icon: EnterIcon,
                 onClick: () => this.showContextualSignInDialog()
               },
           canCreateRoom && {
             id: "create-room",
-            label: <FormattedMessage id="more-menu.create-room" defaultMessage="Create Room" />,
+            label: <FormattedMessage id="more-menu.create-room" defaultMessage="방 생성" />,
             icon: AddIcon,
             onClick: () =>
               this.showNonHistoriedDialog(LeaveRoomModal, {
@@ -1114,13 +1107,13 @@ class UIRoot extends Component {
           },
           {
             id: "user-profile",
-            label: <FormattedMessage id="more-menu.profile" defaultMessage="Change Name & Avatar" />,
+            label: <FormattedMessage id="more-menu.profile" defaultMessage="방 이름 및 아바타 변경" />,
             icon: AvatarIcon,
             onClick: () => this.setSidebar("profile")
           },
           {
             id: "favorite-rooms",
-            label: <FormattedMessage id="more-menu.favorite-rooms" defaultMessage="Favorite Rooms" />,
+            label: <FormattedMessage id="more-menu.favorite-rooms" defaultMessage="즐겨찾는 방" />,
             icon: FavoritesIcon,
             onClick: () =>
               this.props.performConditionalSignIn(
@@ -1134,7 +1127,7 @@ class UIRoot extends Component {
           },
           {
             id: "preferences",
-            label: "Preferences",
+            label: "환경설정",
             icon: SettingsIcon,
             onClick: () => this.setState({ showPrefs: true })
           }
@@ -1146,27 +1139,27 @@ class UIRoot extends Component {
         items: [
           {
             id: "room-info",
-            label: <FormattedMessage id="more-menu.room-info" defaultMessage="Room Info and Settings" />,
+            label: <FormattedMessage id="more-menu.room-info" defaultMessage="방 정보 및 설정" />,
             icon: HomeIcon,
             onClick: () => this.setSidebar("room-info")
           },
           (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
             (this.props.hub.entry_mode !== "invite" || this.props.hubChannel.can("update_hub")) && {
               id: "invite",
-              label: <FormattedMessage id="more-menu.invite" defaultMessage="Invite" />,
+              label: <FormattedMessage id="more-menu.invite" defaultMessage="초대" />,
               icon: InviteIcon,
               onClick: () => this.props.scene.emit("action_invite")
             },
           this.isFavorited()
             ? {
                 id: "unfavorite-room",
-                label: <FormattedMessage id="more-menu.unfavorite-room" defaultMessage="Unfavorite Room" />,
+                label: <FormattedMessage id="more-menu.unfavorite-room" defaultMessage="방 즐겨찾기 해제" />,
                 icon: StarIcon,
                 onClick: () => this.toggleFavorited()
               }
             : {
                 id: "favorite-room",
-                label: <FormattedMessage id="more-menu.favorite-room" defaultMessage="Favorite Room" />,
+                label: <FormattedMessage id="more-menu.favorite-room" defaultMessage="방 즐겨찾기" />,
                 icon: StarOutlineIcon,
                 onClick: () => this.toggleFavorited()
               },
@@ -1174,9 +1167,9 @@ class UIRoot extends Component {
             entered && {
               id: "streamer-mode",
               label: streaming ? (
-                <FormattedMessage id="more-menu.exit-streamer-mode" defaultMessage="Exit Streamer Mode" />
+                <FormattedMessage id="more-menu.exit-streamer-mode" defaultMessage="스트리머 모드 나가기" />
               ) : (
-                <FormattedMessage id="more-menu.enter-streamer-mode" defaultMessage="Enter Streamer Mode" />
+                <FormattedMessage id="more-menu.enter-streamer-mode" defaultMessage="스트리머 모드 입장" />
               ),
               icon: CameraIcon,
               onClick: () => this.toggleStreamerMode()
@@ -1184,7 +1177,7 @@ class UIRoot extends Component {
           (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
             entered && {
               id: "leave-room",
-              label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
+              label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="방 나가기" />,
               icon: LeaveIcon,
               onClick: () => {
                 this.showNonHistoriedDialog(LeaveRoomModal, {
@@ -1195,7 +1188,7 @@ class UIRoot extends Component {
             },
           canCloseRoom && {
             id: "close-room",
-            label: <FormattedMessage id="more-menu.close-room" defaultMessage="Close Room" />,
+            label: <FormattedMessage id="more-menu.close-room" defaultMessage="방 닫기" />,
             icon: DeleteIcon,
             onClick: () =>
               this.props.performConditionalSignIn(
@@ -1210,60 +1203,6 @@ class UIRoot extends Component {
                 },
                 SignInMessages.closeRoom
               )
-          }
-        ].filter(item => item)
-      },
-      {
-        id: "support",
-        label: <FormattedMessage id="more-menu.support" defaultMessage="Support" />,
-        items: [
-          configs.feature("show_community_link") && {
-            id: "community",
-            label: <FormattedMessage id="more-menu.community" defaultMessage="Community" />,
-            icon: DiscordIcon,
-            href: configs.link("community", "https://discord.gg/dFJncWwHun")
-          },
-          configs.feature("show_issue_report_link") && {
-            id: "report-issue",
-            label: <FormattedMessage id="more-menu.report-issue" defaultMessage="Report Issue" />,
-            icon: WarningCircleIcon,
-            href: configs.link("issue_report", "https://hubs.mozilla.com/docs/help.html")
-          },
-          entered && {
-            id: "start-tour",
-            label: <FormattedMessage id="more-menu.start-tour" defaultMessage="Start Tour" />,
-            icon: SupportIcon,
-            onClick: () => this.props.scene.systems.tips.resetTips()
-          },
-          configs.feature("show_docs_link") && {
-            id: "help",
-            label: <FormattedMessage id="more-menu.help" defaultMessage="Help" />,
-            icon: SupportIcon,
-            href: configs.link("docs", "https://hubs.mozilla.com/docs")
-          },
-          configs.feature("show_controls_link") && {
-            id: "controls",
-            label: <FormattedMessage id="more-menu.controls" defaultMessage="Controls" />,
-            icon: SupportIcon,
-            href: configs.link("controls", "https://hubs.mozilla.com/docs/hubs-controls.html")
-          },
-          configs.feature("show_whats_new_link") && {
-            id: "whats-new",
-            label: <FormattedMessage id="more-menu.whats-new" defaultMessage="What's New" />,
-            icon: SupportIcon,
-            href: "/whats-new"
-          },
-          configs.feature("show_terms") && {
-            id: "tos",
-            label: <FormattedMessage id="more-menu.tos" defaultMessage="Terms of Service" />,
-            icon: TextDocumentIcon,
-            href: configs.link("terms_of_use", "https://github.com/mozilla/hubs/blob/master/TERMS.md")
-          },
-          configs.feature("show_privacy") && {
-            id: "privacy",
-            label: <FormattedMessage id="more-menu.privacy" defaultMessage="Privacy Notice" />,
-            icon: ShieldIcon,
-            href: configs.link("privacy_notice", "https://github.com/mozilla/hubs/blob/master/PRIVACY.md")
           }
         ].filter(item => item)
       }
@@ -1512,7 +1451,7 @@ class UIRoot extends Component {
                       <>
                         <ToolbarButton
                           icon={<EnterIcon />}
-                          label={<FormattedMessage id="toolbar.join-room-button" defaultMessage="Join Room" />}
+                          label={<FormattedMessage id="toolbar.join-room-button" defaultMessage="방 입장" />}
                           preset="green"
                           onClick={() => this.setState({ watching: false })}
                         />
@@ -1520,9 +1459,7 @@ class UIRoot extends Component {
                           <ToolbarButton
                             icon={<VRIcon />}
                             preset="purple"
-                            label={
-                              <FormattedMessage id="toolbar.spectate-in-vr-button" defaultMessage="Spectate in VR" />
-                            }
+                            label={<FormattedMessage id="toolbar.spectate-in-vr-button" defaultMessage="VR 보기" />}
                             onClick={() => this.props.scene.enterVR()}
                           />
                         )}
@@ -1551,7 +1488,7 @@ class UIRoot extends Component {
                           className={styleUtils.hideLg}
                           icon={<VRIcon />}
                           preset="accept"
-                          label={<FormattedMessage id="toolbar.enter-vr-button" defaultMessage="Enter VR" />}
+                          label={<FormattedMessage id="toolbar.enter-vr-button" defaultMessage="VR 입장" />}
                           onClick={() => exit2DInterstitialAndEnterVR(true)}
                         />
                       )}
@@ -1564,14 +1501,14 @@ class UIRoot extends Component {
                         <ToolbarButton
                           icon={<VRIcon />}
                           preset="accept"
-                          label={<FormattedMessage id="toolbar.enter-vr-button" defaultMessage="Enter VR" />}
+                          label={<FormattedMessage id="toolbar.enter-vr-button" defaultMessage="VR 입장" />}
                           onClick={() => exit2DInterstitialAndEnterVR(true)}
                         />
                       )}
                     {entered && (
                       <ToolbarButton
                         icon={<LeaveIcon />}
-                        label={<FormattedMessage id="toolbar.leave-room-button" defaultMessage="Leave" />}
+                        label={<FormattedMessage id="toolbar.leave-room-button" defaultMessage="나가기" />}
                         preset="red"
                         onClick={() => {
                           this.showNonHistoriedDialog(LeaveRoomModal, {

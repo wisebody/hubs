@@ -65,9 +65,9 @@ const DEFAULT_FACETS = {
     { text: "Transport", params: { filter: "transport" } }
   ],
   avatars: [
-    { text: "Featured", params: { filter: "featured" } },
-    { text: "My Avatars", params: { filter: "my-avatars" } },
-    { text: "Newest", params: { filter: "" } }
+    { text: "아바타", params: { filter: "featured" } },
+    { text: "마이 아바타", params: { filter: "my-avatars" } },
+    { text: "신규 아바타", params: { filter: "" } }
   ],
   favorites: [],
   scenes: [{ text: "Featured", params: { filter: "featured" } }, { text: "My Scenes", params: { filter: "my-scenes" } }]
@@ -507,7 +507,7 @@ class MediaBrowserContainer extends Component {
               <CreateTile
                 type="avatar"
                 onClick={this.onCreateAvatar}
-                label={<FormattedMessage id="media-browser.create-avatar" defaultMessage="Create Avatar" />}
+                label={<FormattedMessage id="media-browser.create-avatar" defaultMessage="아바타 생성" />}
               />
             )}
             {urlSource === "scenes" &&

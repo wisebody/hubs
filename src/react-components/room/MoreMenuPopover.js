@@ -88,7 +88,7 @@ MoreMenuContextProvider.propTypes = {
 
 const moreMenuTitle = defineMessage({
   id: "more-menu-popover.title",
-  defaultMessage: "More"
+  defaultMessage: "더보기"
 });
 
 export function MoreMenuPopoverButton({ menu }) {

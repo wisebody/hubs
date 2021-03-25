@@ -1,5 +1,5 @@
-import appLogo from "../assets/images/app-logo.png";
-import companyLogo from "../assets/images/company-logo.png";
+import appLogo from "../assets/app-logo.png";
+import companyLogo from "../assets/company-logo.png";
 import homeHeroBackground from "../assets/images/home-hero-background-unbranded.png";
 import sceneEditorLogo from "../assets/images/editor-logo.png";
 import { getLocale, getMessage } from "./i18n";

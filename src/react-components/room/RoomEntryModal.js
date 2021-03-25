@@ -35,12 +35,12 @@ export function RoomEntryModal({
         {breakpoint !== "sm" &&
           breakpoint !== "md" && (
             <div className={styles.logoContainer}>
-              <img src={logoSrc} alt={appName} />
+              <img src="../../assets/company-logo.png" alt={appName} />
             </div>
           )}
         <div className={styles.roomName}>
           <h5>
-            <FormattedMessage id="room-entry-modal.room-name-label" defaultMessage="Room Name" />
+            <FormattedMessage id="room-entry-modal.room-name-label" defaultMessage="방 이름" />
           </h5>
           <p>{roomName}</p>
         </div>
@@ -49,7 +49,7 @@ export function RoomEntryModal({
             <Button preset="blue" onClick={onJoinRoom}>
               <EnterIcon />
               <span>
-                <FormattedMessage id="room-entry-modal.join-room-button" defaultMessage="Join Room" />
+                <FormattedMessage id="room-entry-modal.join-room-button" defaultMessage="입장하기" />
               </span>
             </Button>
           )}
@@ -57,7 +57,7 @@ export function RoomEntryModal({
             <Button preset="purple" onClick={onEnterOnDevice}>
               <VRIcon />
               <span>
-                <FormattedMessage id="room-entry-modal.enter-on-device-button" defaultMessage="Enter On Device" />
+                <FormattedMessage id="room-entry-modal.enter-on-device-button" defaultMessage="VR 입장하기" />
               </span>
             </Button>
           )}
@@ -65,7 +65,7 @@ export function RoomEntryModal({
             <Button preset="orange" onClick={onSpectate}>
               <ShowIcon />
               <span>
-                <FormattedMessage id="room-entry-modal.spectate-button" defaultMessage="Spectate" />
+                <FormattedMessage id="room-entry-modal.spectate-button" defaultMessage="관전하기" />
               </span>
             </Button>
           )}
@@ -76,7 +76,7 @@ export function RoomEntryModal({
                 <Button preset="transparent" className={styleUtils.showLg} onClick={onOptions}>
                   <SettingsIcon />
                   <span>
-                    <FormattedMessage id="room-entry-modal.options-button" defaultMessage="Options" />
+                    <FormattedMessage id="room-entry-modal.options-button" defaultMessage="옵션" />
                   </span>
                 </Button>
               </>

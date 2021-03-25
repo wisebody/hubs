@@ -7,7 +7,7 @@ export function LoadingScreenLayout({ center, bottom, logoSrc }) {
   return (
     <div className={styles.loadingScreenLayout}>
       <Column center padding gap="lg" className={styles.center}>
-        <img className={styles.logo} src={logoSrc} />
+        <img className={styles.logo} src="../../assets/app-logo.png" />
         {center}
       </Column>
       {bottom && (

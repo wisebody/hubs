@@ -24,7 +24,7 @@ function MyMenuItems({ onOpenProfile }) {
     <ObjectMenuButton onClick={onOpenProfile}>
       <AvatarIcon />
       <span>
-        <FormattedMessage id="object-menu.edit-avatar-button" defaultMessage="Edit Avatar" />
+        <FormattedMessage id="object-menu.edit-avatar-button" defaultMessage="아바타 변경" />
       </span>
     </ObjectMenuButton>
   );
@@ -46,7 +46,7 @@ function PlayerMenuItems({ hubChannel, activeObject, deselectObject }) {
     >
       <HideIcon />
       <span>
-        <FormattedMessage id="object-menu.hide-avatar-button" defaultMessage="Hide" />
+        <FormattedMessage id="object-menu.hide-avatar-button" defaultMessage="숨김" />
       </span>
     </ObjectMenuButton>
   );

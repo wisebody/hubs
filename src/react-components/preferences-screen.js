@@ -355,127 +355,127 @@ ListItem.propTypes = {
 const preferenceLabels = defineMessages({
   preferredCamera: {
     id: "preferences-screen.preference.preferred-camera",
-    defaultMessage: "Preferred camera"
+    defaultMessage: "선호하는 카메라"
   },
   preferredMic: {
     id: "preferences-screen.preference.preferred-mic",
-    defaultMessage: "Preferred mic"
+    defaultMessage: "선호하는 마이크"
   },
   muteMicOnEntry: {
     id: "preferences-screen.preference.mute-mic-on-entry",
-    defaultMessage: "Mute microphone on entry"
+    defaultMessage: "입장시 마이크 음소거"
   },
   globalVoiceVolume: {
     id: "preferences-screen.preference.global-voice-volume",
-    defaultMessage: "Incoming Voice Volume"
+    defaultMessage: "음성 볼륨"
   },
   globalMediaVolume: {
     id: "preferences-screen.preference.global-media-volume",
-    defaultMessage: "Media Volume"
+    defaultMessage: "미디어 볼륨"
   },
   disableSoundEffects: {
     id: "preferences-screen.preference.disable-sound-effects",
-    defaultMessage: "Disable Sound Effects"
+    defaultMessage: "사운드 효과 비활성화"
   },
   disableEchoCancellation: {
     id: "preferences-screen.preference.disable-echo-cancellation",
-    defaultMessage: "Disable microphone echo cancellation"
+    defaultMessage: "마이크 에코 제거 비활성화"
   },
   disableNoiseSuppression: {
     id: "preferences-screen.preference.disable-noise-suppression",
-    defaultMessage: "Disable microphone noise supression"
+    defaultMessage: "마이크 소음 억제 비활성화"
   },
   disableAutoGainControl: {
     id: "preferences-screen.preference.disable-auto-gain-control",
-    defaultMessage: "Disable microphone automatic gain control"
+    defaultMessage: "마이크 자동 제어 비활성화"
   },
   snapRotationDegrees: {
     id: "preferences-screen.preference.snap-rotation-degrees",
-    defaultMessage: "Rotation per snap (in degrees)"
+    defaultMessage: "움직임 회전 값(각도)"
   },
   disableMovement: {
     id: "preferences-screen.preference.disable-movement",
-    defaultMessage: "Disable movement"
+    defaultMessage: "이동 비활성화"
   },
   disableBackwardsMovement: {
     id: "preferences-screen.preference.disable-backwards-movement",
-    defaultMessage: "Disable backwards movement"
+    defaultMessage: "뒤로 이동 비활성화"
   },
   disableStrafing: {
     id: "preferences-screen.preference.disable-strafing",
-    defaultMessage: "Disable strafing"
+    defaultMessage: "가로 이동 비활성화"
   },
   disableTeleporter: {
     id: "preferences-screen.preference.disable-teleporter",
-    defaultMessage: "Disable teleporter"
+    defaultMessage: "순간이동 비활성화"
   },
   movementSpeedModifier: {
     id: "preferences-screen.preference.movement-speed-modifier",
-    defaultMessage: "Movement speed modifier"
+    defaultMessage: "이동속도"
   },
   enableOnScreenJoystickLeft: {
     id: "preferences-screen.preference.enable-on-screen-joystick-left",
-    defaultMessage: "Enable left on-screen joystick for moving around"
+    defaultMessage: "조이스틱 활성화 - 화면 좌측"
   },
   enableOnScreenJoystickRight: {
     id: "preferences-screen.preference.enable-on-screen-joystick-right",
-    defaultMessage: "Enable right on-screen joystick for looking around"
+    defaultMessage: "조이스틱 활성화 - 화면 우측"
   },
   enableGyro: {
     id: "preferences-screen.preference.enable-gyro",
-    defaultMessage: "Enable gyroscope (when supported by browser/device)"
+    defaultMessage: "자이로스코프 활성화"
   },
   invertTouchscreenCameraMove: {
     id: "preferences-screen.preference.invert-touchscreen-camera-move",
-    defaultMessage: "Invert direction of camera movement for touchscreens"
+    defaultMessage: "카메리 이동 방향 반전 - 터치스크린용"
   },
   locale: {
     id: "preferences-screen.preference.locale",
-    defaultMessage: "Language"
+    defaultMessage: "언어"
   },
   onlyShowNametagsInFreeze: {
     id: "preferences-screen.preference.only-show-nametags-in-freeze",
-    defaultMessage: "Only show nametags while frozen"
+    defaultMessage: "정지된 상태에서만 이름 표시"
   },
   animateWaypointTransitions: {
     id: "preferences-screen.preference.animate-waypoint-transitions",
-    defaultMessage: "Animate waypoint transitions"
+    defaultMessage: "위치 전환 효과"
   },
   showFPSCounter: {
     id: "preferences-screen.preference.show-fps-counter",
-    defaultMessage: "Show FPS Counter"
+    defaultMessage: "FPS 값 출력"
   },
   maxResolution: {
     id: "preferences-screen.preference.max-resolution",
-    defaultMessage: "Max Resolution"
+    defaultMessage: "최대 해상도"
   },
   materialQualitySetting: {
     id: "preferences-screen.preference.material-quality-setting",
-    defaultMessage: "Material quality"
+    defaultMessage: "품질"
   },
   enableDynamicShadows: {
     id: "preferences-screen.preference.enable-dynamic-shadows",
-    defaultMessage: "Enable Dynamic Shadows"
+    defaultMessage: "역동적인 그림자 활성화"
   },
   disableAutoPixelRatio: {
     id: "preferences-screen.preference.disable-auto-pixel-ratio",
-    defaultMessage: "Disable automatic pixel ratio adjustments"
+    defaultMessage: "자동 픽셀 비율 조정 비활성화"
   },
   allowMultipleHubsInstances: {
     id: "preferences-screen.preference.allow-multiple-hubs-instances",
-    defaultMessage: "Disable auto-exit when multiple hubs instances are open"
+    defaultMessage: "여러 개의 방에 입장했을 때 자동 종료 비활성화"
   },
   disableIdleDetection: {
     id: "preferences-screen.preference.disable-idle-detection",
-    defaultMessage: "Disable auto-exit when idle or backgrounded"
+    defaultMessage: "대기상태일때 자동 종료 비활성화"
   },
   preferMobileObjectInfoPanel: {
     id: "preferences-screen.preference.prefer-mobile-object-info-panel",
-    defaultMessage: "Prefer Mobile Object Info Panel"
+    defaultMessage: "모바일 정보 패널 선호"
   },
   showRtcDebugPanel: {
     id: "preferences-screen.preference.show-rtc-debug-panel",
-    defaultMessage: "Show RTC Panel"
+    defaultMessage: "RTC 패널 보이기"
   }
 });
 
@@ -586,11 +586,11 @@ const CATEGORY_MOVEMENT = 3;
 const CATEGORY_TOUCHSCREEN = 4;
 const TOP_LEVEL_CATEGORIES = [CATEGORY_AUDIO, CATEGORY_CONTROLS, CATEGORY_MISC];
 const categoryNames = defineMessages({
-  [CATEGORY_AUDIO]: { id: "preferences-screen.category.audio", defaultMessage: "Audio" },
-  [CATEGORY_CONTROLS]: { id: "preferences-screen.category.controls", defaultMessage: "Controls" },
-  [CATEGORY_MISC]: { id: "preferences-screen.category.misc", defaultMessage: "Misc" },
-  [CATEGORY_MOVEMENT]: { id: "preferences-screen.category.movement", defaultMessage: "Movement" },
-  [CATEGORY_TOUCHSCREEN]: { id: "preferences-screen.category.touchscreen", defaultMessage: "Touchscreen" }
+  [CATEGORY_AUDIO]: { id: "preferences-screen.category.audio", defaultMessage: "오디오" },
+  [CATEGORY_CONTROLS]: { id: "preferences-screen.category.controls", defaultMessage: "컨트롤" },
+  [CATEGORY_MISC]: { id: "preferences-screen.category.misc", defaultMessage: "기타" },
+  [CATEGORY_MOVEMENT]: { id: "preferences-screen.category.movement", defaultMessage: "이동" },
+  [CATEGORY_TOUCHSCREEN]: { id: "preferences-screen.category.touchscreen", defaultMessage: "터치스크린" }
 });
 
 function NavItem({ ariaLabel, title, onClick, selected }) {
@@ -617,7 +617,7 @@ function CloseButton({ onClick }) {
       autoFocus
       aria-label={intl.formatMessage({
         id: "preferences-screen.close-button",
-        defaultMessage: "Close Preferences Menu"
+        defaultMessage: "닫기"
       })}
       className={classNames(styles.closeButton)}
       onClick={onClick}

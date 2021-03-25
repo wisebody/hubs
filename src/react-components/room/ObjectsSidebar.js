@@ -30,12 +30,12 @@ function getObjectIcon(type) {
 }
 
 const objectTypeNames = defineMessages({
-  video: { id: "objects-sidebar.object-type.video", defaultMessage: "Video" },
-  audio: { id: "objects-sidebar.object-type.audio", defaultMessage: "Audio" },
-  image: { id: "objects-sidebar.object-type.image", defaultMessage: "Image" },
+  video: { id: "objects-sidebar.object-type.video", defaultMessage: "비디오" },
+  audio: { id: "objects-sidebar.object-type.audio", defaultMessage: "오디오" },
+  image: { id: "objects-sidebar.object-type.image", defaultMessage: "이미지" },
   pdf: { id: "objects-sidebar.object-type.pdf", defaultMessage: "PDF" },
-  model: { id: "objects-sidebar.object-type.model", defaultMessage: "Model" },
-  default: { id: "objects-sidebar.object-type.default", defaultMessage: "Object" }
+  model: { id: "objects-sidebar.object-type.model", defaultMessage: "모델" },
+  default: { id: "objects-sidebar.object-type.default", defaultMessage: "객체" }
 });
 
 export function ObjectsSidebarItem({ selected, object, ...rest }) {
@@ -74,11 +74,14 @@ export function NoObjects({ canAddObjects }) {
   return (
     <li className={styles.noObjects}>
       <p>
-        <FormattedMessage id="objects-sidebar.no-objects" defaultMessage="There are no objects in the room." />
+        <FormattedMessage id="objects-sidebar.no-objects" defaultMessage="객체가 없습니다." />
       </p>
       {canAddObjects && (
         <p>
-          <FormattedMessage id="objects-sidebar.place-menu-tip" defaultMessage="Use the place menu to add objects." />
+          <FormattedMessage
+            id="objects-sidebar.place-menu-tip"
+            defaultMessage="장소 메뉴를 클릭하여 객체를 추가하세요."
+          />
         </p>
       )}
     </li>
@@ -93,11 +96,7 @@ export function ObjectsSidebar({ children, objectCount, onClose }) {
   return (
     <Sidebar
       title={
-        <FormattedMessage
-          id="objects-sidebar.title"
-          defaultMessage="Objects ({objectCount})"
-          values={{ objectCount }}
-        />
+        <FormattedMessage id="objects-sidebar.title" defaultMessage="객체들 ({objectCount})" values={{ objectCount }} />
       }
       beforeTitle={<CloseButton onClick={onClose} />}
     >

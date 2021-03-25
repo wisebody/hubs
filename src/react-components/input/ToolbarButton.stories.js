@@ -24,11 +24,9 @@ export default {
 
 export const AllButtons = args => (
   <Column padding>
-    {presets.map(preset => (
-      <ToolbarButton key={preset} icon={<ShareIcon />} label={preset} preset={preset} {...args} />
-    ))}
-    <ToolbarButton icon={<ShareIcon />} label="Share" preset="purple" statusColor="red" />
-    <ToolbarButton icon={<MicrophoneIcon />} label="Voice" statusColor="green" />
+    {presets.map(preset => <ToolbarButton key={preset} icon={<ShareIcon />} label={label} preset={preset} {...args} />)}
+    <ToolbarButton icon={<ShareIcon />} label="공유" preset="purple" statusColor="red" />
+    <ToolbarButton icon={<MicrophoneIcon />} label="음성" statusColor="green" />
   </Column>
 );
 
@@ -42,20 +40,20 @@ AllButtons.parameters = {
 
 export const RoomToolbar = () => (
   <RoomLayout
-    toolbarLeft={<ToolbarButton icon={<InviteIcon />} label="Invite" preset="basic" />}
+    toolbarLeft={<ToolbarButton icon={<InviteIcon />} label="초대" preset="basic" />}
     toolbarCenter={
       <>
-        <ToolbarButton icon={<MicrophoneIcon />} label="Voice" preset="basic" />
-        <ToolbarButton icon={<ShareIcon />} label="Share" preset="purple" />
-        <ToolbarButton icon={<ObjectIcon />} label="Place" preset="green" />
-        <ToolbarButton icon={<ReactionIcon />} label="React" preset="orange" />
-        <ToolbarButton icon={<ChatIcon />} label="Chat" preset="blue" />
+        <ToolbarButton icon={<MicrophoneIcon />} label="음성" preset="basic" />
+        <ToolbarButton icon={<ShareIcon />} label="공유" preset="purple" />
+        <ToolbarButton icon={<ObjectIcon />} label="장소" preset="green" />
+        <ToolbarButton icon={<ReactionIcon />} label="반응" preset="orange" />
+        <ToolbarButton icon={<ChatIcon />} label="대화" preset="blue" />
       </>
     }
     toolbarRight={
       <>
-        <ToolbarButton icon={<LeaveIcon />} label="Leave" preset="red" />
-        <ToolbarButton icon={<MoreIcon />} label="More" preset="transparent" />
+        <ToolbarButton icon={<LeaveIcon />} label="떠나기" preset="red" />
+        <ToolbarButton icon={<MoreIcon />} label="더보기" preset="transparent" />
       </>
     }
   />
@@ -70,14 +68,14 @@ RoomToolbar.parameters = {
 
 export const EntryToolbar = () => (
   <RoomLayout
-    toolbarLeft={<ToolbarButton icon={<InviteIcon />} label="Invite" preset="basic" />}
+    toolbarLeft={<ToolbarButton icon={<InviteIcon />} label="초대" preset="basic" />}
     toolbarCenter={
       <>
-        <ToolbarButton icon={<InviteIcon />} label="Invite" preset="basic" className={styleUtils.hideLg} />
-        <ToolbarButton icon={<ChatIcon />} label="Chat" preset="blue" />
+        <ToolbarButton icon={<InviteIcon />} label="초대" preset="basic" className={styleUtils.hideLg} />
+        <ToolbarButton icon={<ChatIcon />} label="대화" preset="blue" />
       </>
     }
-    toolbarRight={<ToolbarButton icon={<MoreIcon />} label="More" preset="transparent" />}
+    toolbarRight={<ToolbarButton icon={<MoreIcon />} label="더보기" preset="transparent" />}
   />
 );
 
