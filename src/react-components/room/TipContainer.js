@@ -108,6 +108,8 @@ export function TipContainer({ hide, inLobby, inRoom, isStreaming, isEmbedded, s
   // If we move tip state to a context then we can remove this and not render this component at all.
   if (hide) {
     return null;
+  } else {
+    return null;
   }
 
   if (inLobby) {
