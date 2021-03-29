@@ -1105,7 +1105,7 @@ class UIRoot extends Component {
           },
           {
             id: "user-profile",
-            label: <FormattedMessage id="more-menu.profile" defaultMessage="방 이름 및 아바타 변경" />,
+            label: <FormattedMessage id="more-menu.profile" defaultMessage="아바타 이름 및 아바타 변경" />,
             icon: AvatarIcon,
             onClick: () => this.setSidebar("profile")
           },
