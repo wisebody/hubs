@@ -92,16 +92,17 @@ export function UserProfileSidebar({
             <FormattedMessage id="user-profile-sidebar.mute-button" defaultMessage="Mute" />
           </Button>
         )}
-        {canKick && (
-          <Button preset="red" onClick={onKick}>
-            <FormattedMessage id="user-profile-sidebar.kick-button" defaultMessage="Kick" />
-          </Button>
-        )}
       </Column>
     </Sidebar>
   );
 }
-
+/*
+{canKick && (
+          <Button preset="red" onClick={onKick}>
+            <FormattedMessage id="user-profile-sidebar.kick-button" defaultMessage="Kick" />
+          </Button>
+        )}
+*/
 UserProfileSidebar.propTypes = {
   className: PropTypes.string,
   displayName: PropTypes.string,
