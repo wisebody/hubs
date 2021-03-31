@@ -80,13 +80,6 @@ export function UserProfileSidebar({
             <FormattedMessage id="user-profile-sidebar.demote-button" defaultMessage="Demote" />
           </Button>
         )}
-        <Button onClick={onToggleHidden}>
-          {isHidden ? (
-            <FormattedMessage id="user-profile-sidebar.unhide-button" defaultMessage="Unhide" />
-          ) : (
-            <FormattedMessage id="user-profile-sidebar.hide-button" defaultMessage="Hide" />
-          )}
-        </Button>
         {canMute && (
           <Button preset="red" onClick={onMute}>
             <FormattedMessage id="user-profile-sidebar.mute-button" defaultMessage="Mute" />
@@ -97,6 +90,13 @@ export function UserProfileSidebar({
   );
 }
 /*
+<Button onClick={onToggleHidden}>
+  {isHidden ? (
+    <FormattedMessage id="user-profile-sidebar.unhide-button" defaultMessage="Unhide" />
+  ) : (
+    <FormattedMessage id="user-profile-sidebar.hide-button" defaultMessage="Hide" />
+  )}
+</Button>
 {canKick && (
           <Button preset="red" onClick={onKick}>
             <FormattedMessage id="user-profile-sidebar.kick-button" defaultMessage="Kick" />
