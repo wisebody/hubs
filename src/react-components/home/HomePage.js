@@ -51,30 +51,57 @@ export function HomePage() {
   return (
     <PageContainer className={styles.homePage}>
       <Container>
-        <div className={styles.hero}>
-          <div className={styles.logoContainer}>
-            <img alt={configs.translation("app-name")} src={configs.image("logo")} />
-          </div>
-          <div className={styles.appInfo}>
-            <div className={styles.appDescription}>{configs.translation("app-description")}</div>
-            {canCreateRooms && <CreateRoomButton />}
-            <PWAButton />
-          </div>
-          <div className={styles.heroImageContainer}>
-            <img
-              alt={intl.formatMessage(
-                {
-                  id: "home-page.hero-image-alt",
-                  defaultMessage: "Screenshot of {appName}"
-                },
-                { appName: configs.translation("app-name") }
-              )}
-              src={configs.image("home_background")}
-            />
-          </div>
-        </div>
+        <a href="https://edu.ventavr.com">https://edu.ventavr.com</a>&nbsp;&nbsp;&nbsp;바로가기
       </Container>
-      {configs.feature("show_feature_panels") && (
+
+      {sortedPublicRooms.length > 1000 && (
+        <Container className={styles.roomsContainer}>
+          <h3 className={styles.roomsHeading}>
+            <FormattedMessage id="home-page.public--rooms" defaultMessage="Public Rooms" />
+          </h3>
+          <Column grow padding className={styles.rooms}>
+            <MediaGrid center>
+              {sortedPublicRooms.map(room => {
+                return (
+                  <MediaTile
+                    key={room.id}
+                    entry={room}
+                    processThumbnailUrl={(entry, width, height) =>
+                      scaledThumbnailUrlFor(entry.images.preview.url, width, height)
+                    }
+                  />
+                );
+              })}
+            </MediaGrid>
+          </Column>
+        </Container>
+      )}
+      {sortedFavoriteRooms.length > 1000 && (
+        <Container className={styles.roomsContainer}>
+          <h3 className={styles.roomsHeading}>
+            <FormattedMessage id="home-page.favorite-rooms" defaultMessage="Favorite Rooms" />
+          </h3>
+          <Column grow padding className={styles.rooms}>
+            <MediaGrid center>
+              {sortedFavoriteRooms.map(room => {
+                return (
+                  <MediaTile
+                    key={room.id}
+                    entry={room}
+                    processThumbnailUrl={(entry, width, height) =>
+                      scaledThumbnailUrlFor(entry.images.preview.url, width, height)
+                    }
+                  />
+                );
+              })}
+            </MediaGrid>
+          </Column>
+        </Container>
+      )}
+    </PageContainer>
+  );
+  /*
+  {configs.feature("show_feature_panels") && (
         <Container className={classNames(styles.features, styles.colLg, styles.centerLg)}>
           <Column padding gap="xl" className={styles.card}>
             <img src={configs.image("landing_rooms_thumb")} />
@@ -114,50 +141,7 @@ export function HomePage() {
           </Column>
         </Container>
       )}
-      {sortedPublicRooms.length > 0 && (
-        <Container className={styles.roomsContainer}>
-          <h3 className={styles.roomsHeading}>
-            <FormattedMessage id="home-page.public--rooms" defaultMessage="Public Rooms" />
-          </h3>
-          <Column grow padding className={styles.rooms}>
-            <MediaGrid center>
-              {sortedPublicRooms.map(room => {
-                return (
-                  <MediaTile
-                    key={room.id}
-                    entry={room}
-                    processThumbnailUrl={(entry, width, height) =>
-                      scaledThumbnailUrlFor(entry.images.preview.url, width, height)
-                    }
-                  />
-                );
-              })}
-            </MediaGrid>
-          </Column>
-        </Container>
-      )}
-      {sortedFavoriteRooms.length > 0 && (
-        <Container className={styles.roomsContainer}>
-          <h3 className={styles.roomsHeading}>
-            <FormattedMessage id="home-page.favorite-rooms" defaultMessage="Favorite Rooms" />
-          </h3>
-          <Column grow padding className={styles.rooms}>
-            <MediaGrid center>
-              {sortedFavoriteRooms.map(room => {
-                return (
-                  <MediaTile
-                    key={room.id}
-                    entry={room}
-                    processThumbnailUrl={(entry, width, height) =>
-                      scaledThumbnailUrlFor(entry.images.preview.url, width, height)
-                    }
-                  />
-                );
-              })}
-            </MediaGrid>
-          </Column>
-        </Container>
-      )}
+      public 목록 안 뜨도록 1000 개로 수정함
       <Container>
         <Column padding center grow>
           <Button lg preset="blue" as="a" href="/link">
@@ -165,6 +149,5 @@ export function HomePage() {
           </Button>
         </Column>
       </Container>
-    </PageContainer>
-  );
+  */
 }
