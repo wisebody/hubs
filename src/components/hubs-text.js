@@ -90,7 +90,7 @@ const FONTS = {
     //json: loadFont("https://cdn.aframe.io/fonts/Roboto-msdf.json"),
     //texture: loadTexture("https://cdn.aframe.io/fonts/Roboto-msdf.png")
     json: loadFont("https://api.metatour.net/fonts/Roboto-msdf.json"),
-    texture: loadTexture("https://api.metatour.net/fonts/Roboto-msdf.png")
+    texture: loadTexture("https://metatour-4-assets.metatour.net/files/91136535-4e62-4a3e-bbb5-a5d1171c2abe.png")
   }
 };
 
