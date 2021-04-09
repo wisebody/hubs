@@ -107,8 +107,6 @@ const onReady = async () => {
       camera.object3D.matrixNeedsUpdate = true;
     }
 
-    console.log("scene changed!");
-
     camera.setAttribute("scene-preview-camera", "");
   });
 
