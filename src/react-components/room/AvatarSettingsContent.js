@@ -29,7 +29,7 @@ export function AvatarSettingsContent({
         description={
           <FormattedMessage
             id="avatar-settings-content.display-name-description"
-            defaultMessage="3자 이상 32자 이하 한글, 영문, 하이픈 기호를 사용하여 입력하세요."
+            defaultMessage="2자 이상 16자 이하 한글, 영문, 하이픈 기호를 사용하여 입력하세요."
           />
         }
         ref={displayNameInputRef}
