@@ -160,7 +160,7 @@ export default class HubChannel extends EventTarget {
     //입장시 로그
 
     fetch(
-      `https://edu.ventavr.com/_api/hub_join.php?inout=IN&hub_id=` +
+      `https://api.metatour.net/_api/hub_join.php?inout=IN&hub_id=` +
         this.hubId +
         `&avata_id=` +
         this.store.state.profile.avatarId +

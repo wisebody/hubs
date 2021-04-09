@@ -89,8 +89,8 @@ const FONTS = {
   roboto: {
     //json: loadFont("https://cdn.aframe.io/fonts/Roboto-msdf.json"),
     //texture: loadTexture("https://cdn.aframe.io/fonts/Roboto-msdf.png")
-    json: loadFont("https://edu.ventavr.com/fonts/Roboto-msdf.json"),
-    texture: loadTexture("https://edu.ventavr.com/fonts/Roboto-msdf.png")
+    json: loadFont("https://api.metatour.net/fonts/Roboto-msdf.json"),
+    texture: loadTexture("https://api.metatour.net/fonts/Roboto-msdf.png")
   }
 };
 
