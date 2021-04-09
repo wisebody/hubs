@@ -55,7 +55,7 @@ function loadFont(src) {
     .then(font => {
       // Fix negative Y offsets for Roboto MSDF font from tool. Experimentally determined.
       //if (src.indexOf("/Roboto-msdf.json") >= 0) {
-      if (src.indexOf("/NanumGothic-Regular.json") >= 0) {
+      if (src.indexOf("/Roboto-msdf.json") >= 0) {
         for (const ch of font.chars) {
           ch.yoffset += 30;
         }
@@ -89,8 +89,8 @@ const FONTS = {
   roboto: {
     //json: loadFont("https://cdn.aframe.io/fonts/Roboto-msdf.json"),
     //texture: loadTexture("https://cdn.aframe.io/fonts/Roboto-msdf.png")
-    json: loadFont("/assets/NanumGothic-Regular.json"),
-    texture: loadTexture("/assets/NanumGothic-Regular.png")
+    json: loadFont("/assets/Roboto-msdf.json"),
+    texture: loadTexture("/assets/Roboto-msdf.png")
   }
 };
 
