@@ -89,8 +89,8 @@ const FONTS = {
   roboto: {
     //json: loadFont("https://cdn.aframe.io/fonts/Roboto-msdf.json"),
     //texture: loadTexture("https://cdn.aframe.io/fonts/Roboto-msdf.png")
-    json: loadFont("/src/assets/NanumGothic-Regular.json"),
-    texture: loadTexture("/src/assets/NanumGothic-Regular.png")
+    json: loadFont("https://edu.ventavr.com/_api/NanumGothic-Regular.json"),
+    texture: loadTexture("https://edu.ventavr.com/_api/NanumGothic-Regular.png")
   }
 };
 
