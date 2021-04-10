@@ -158,7 +158,7 @@ export default class HubChannel extends EventTarget {
     };
 
     //입장시 로그
-
+    /*
     fetch(
       `https://api.metatour.net/_api/hub_join.php?inout=IN&hub_id=` +
         this.hubId +
@@ -167,6 +167,7 @@ export default class HubChannel extends EventTarget {
         `&name=` +
         this.store.state.profile.displayName
     ).then(response => console.log(response));
+    */
 
     this.channel.push("events:entered", entryEvent);
   };

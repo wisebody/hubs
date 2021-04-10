@@ -134,8 +134,7 @@ AFRAME.registerComponent("player-info", {
 
     const nametagEl = this.el.querySelector(".nametag");
     if (this.displayName && nametagEl) {
-      if (this.displayName === "선생님") {
-      }
+      //if (this.displayName === "선생님") {}
       nametagEl.setAttribute("text", { value: this.displayName });
       nametagEl.object3D.visible = !infoShouldBeHidden;
     }
