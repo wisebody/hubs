@@ -38,7 +38,7 @@ export function InviteLinkInputField({ fetchingInvite, inviteUrl, onRevokeInvite
             })
           : inviteUrl
       }
-      buttonPreset="primary"
+      buttonPreset="blue"
       description={
         !fetchingInvite &&
         (showRevokeConfirmation ? (

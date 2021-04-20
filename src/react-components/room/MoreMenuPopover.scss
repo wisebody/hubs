@@ -13,7 +13,7 @@
   margin-left: 16px;
   font-size: theme.$font-size-xs;
   font-weight: theme.$font-weight-bold;
-  color: theme.$text3-color;
+  color: theme.$grey;
 }
 
 :local(.more-menu-item-list) {
@@ -27,7 +27,7 @@
   width: 100%;
   height: 40px;
   padding: 0 16px;
-  color: theme.$text1-color;
+  color: theme.$black;
   font-size: theme.$font-size-sm;
   font-weight: theme.$font-weight-medium;
 
@@ -36,16 +36,6 @@
 
     &:last-child {
       margin-right: 0;
-    }
-  }
-
-  svg {
-    *[stroke=\#000] {
-      stroke: theme.$text1-color;
-    }
-
-    *[fill=\#000] {
-      fill: theme.$text1-color;
     }
   }
 
@@ -62,30 +52,30 @@
   }
 
   &:hover, &:active, :global(body.keyboard-user) &:focus {
-    color: theme.$active-text-color;
+    color: theme.$white;
     font-weight: theme.$font-weight-bold;
 
     svg {
       *[stroke=\#000] {
-        stroke: theme.$active-text-color;
+        stroke: theme.$white;
       }
   
       *[fill=\#000] {
-        fill: theme.$active-text-color;
+        fill: theme.$white;
       }
     }
   }
 
   &:hover, :global(body.keyboard-user) &:focus {
-    background-color: theme.$active-color-hover;
+    background-color: theme.$blue-hover;
   }
 
   &:active {
-    background-color: theme.$active-color-pressed;
+    background-color: theme.$blue-pressed;
   }
 
   :global(body.keyboard-user) &:focus {
-    box-shadow: inset 0 0 0 3px theme.$outline-color;
+    box-shadow: inset 0 0 0 3px theme.$black;
   }
 }
 
@@ -102,20 +92,11 @@ button:local(.more-menu-item-target) {
   width: 48px;
   height: 48px;
   border-radius: 48px;
-  color: theme.$button-text-color;
-  background-color: theme.$button-bg-color;
-  border: 1px solid theme.$button-border-color;
+  background-color: theme.$white;
+  border: 1px solid theme.$lightgrey;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &:hover {
-    background-color: theme.$button-bg-color-hover;
-  }
-
-  &:active {
-    background-color: theme.$button-bg-color-pressed;
-  }
 
   @media(min-width: theme.$breakpoint-lg) {
     display: none;

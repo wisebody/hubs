@@ -3,7 +3,7 @@ import { RoomLayout } from "../layout/RoomLayout";
 import { TwitterOAuthModal } from "./TwitterOAuthModal";
 
 export default {
-  title: "Room/TwitterOAuthModal",
+  title: "TwitterOAuthModal",
   parameters: {
     layout: "fullscreen"
   }

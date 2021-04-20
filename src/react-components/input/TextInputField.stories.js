@@ -1,5 +1,6 @@
 /* eslint-disable @calm/react-intl/missing-formatted-message */
 import React from "react";
+import { withDesign } from "storybook-addon-designs";
 import { TextInputField } from "./TextInputField";
 import { Button } from "./Button";
 import { ReactComponent as WandIcon } from "../icons/Wand.svg";
@@ -7,7 +8,8 @@ import { IconButton } from "./IconButton";
 import { Column } from "../layout/Column";
 
 export default {
-  title: "Input/TextInputField"
+  title: "TextInputField",
+  decorators: [withDesign]
 };
 
 export const All = () => (
@@ -78,3 +80,10 @@ export const All = () => (
     />
   </Column>
 );
+
+All.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/Xag5qaEgYs3KzXvoxx5m8y/Hubs-Redesign?node-id=68%3A7094"
+  }
+};

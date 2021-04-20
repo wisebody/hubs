@@ -4,7 +4,7 @@ import { Column } from "../layout/Column";
 import { ToggleInput } from "./ToggleInput";
 
 export default {
-  title: "Input/ToggleInput",
+  title: "ToggleInput",
   argTypes: { onChange: { action: "onChange" } }
 };
 

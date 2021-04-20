@@ -4,7 +4,7 @@ import { RadioInputField, RadioInputOption } from "./RadioInputField";
 import { Column } from "../layout/Column";
 
 export default {
-  title: "Input/RadioInputField"
+  title: "RadioInputField"
 };
 
 export const All = () => (

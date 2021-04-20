@@ -16,7 +16,7 @@ export function SafariMicModal() {
             p: chunks => <p>{chunks}</p>
           }}
         />
-        <Button preset="accept" onClick={() => location.reload()}>
+        <Button preset="green" onClick={() => location.reload()}>
           <FormattedMessage id="safari-mic-modal.reload-button" defaultMessage="Reload" />
         </Button>
       </Column>

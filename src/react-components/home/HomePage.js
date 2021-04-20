@@ -144,7 +144,7 @@ export function HomePage() {
       public 목록 안 뜨도록 1000 개로 수정함
       <Container>
         <Column padding center grow>
-          <Button lg preset="primary" as="a" href="/link">
+          <Button lg preset="blue" as="a" href="/link">
             <FormattedMessage id="home-page.have-code" defaultMessage="Have a room code?" />
           </Button>
         </Column>

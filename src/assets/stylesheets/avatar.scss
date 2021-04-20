@@ -1,9 +1,9 @@
-@use "../../react-components/styles/theme.scss";
+@import 'root-vars';
 @import 'shared';
 
 body {
   margin: 0;
-  background-color: theme.$background1-color;
+  background-color: var(--full-panel-background-color);
 }
 
 :local(.avatar-landing) {
@@ -49,34 +49,30 @@ body {
   }
 
   :local(.title) {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: theme.$text1-color;
+    @extend %top-title;
     width: 100%;
-    color: theme.$text1-color;
+    color: var(--panel-text-color);
     text-align: center;
   }
 
   :local(.selected-message) {
-    color: theme.$text2-color;
+    color: var(--panel-subtext-color);
     margin-top: 16px;
     height: 48px;
   }
 
   :local(.attributions) {
-    font-size: 1.0em;
-    padding-top: 4px;
+    @extend %top-subtitle;
     margin-bottom: 1em;
   }
 
   :local(.form-submit) {
-    @extend %action-button;
-    background: theme.$primary-color;
+    @extend %bottom-action-button;
     margin: 0;
     min-height: max-content;
     margin-top: 16px;
     &:disabled {
-      background-color: theme.$disabled-bg-color;
+      background-color: $action-color-disabled;
       cursor: default;
     }
   }
@@ -93,29 +89,29 @@ body {
   :local(.copy-tip) {
     position: absolute;
     padding: 5px 20px;
-    background: theme.$tile-button-bg-color;
+    background: var(--tile-button-tip-background-color);
     top: 5px;
     right: 10px;
     border-radius: 20px;
     height: 20px;
     line-height: 20px;
-    color: theme.$tile-button-text-color;
+    color: var(--tile-button-tip-text-color);
   }
 
   :local(.edit-avatar) {
     position: absolute;
     top: 6px;
     right: 7px;
-    color: theme.$tile-button-text-color;
-    background: theme.$tile-button-bg-color;
+    color: var(--tile-button-icon-color);
+    background: var(--tile-button-background-color);
     border-radius: 30px;
     width: 30px;
     height: 30px;
     text-align: center;
     line-height: 30px;
-
     &:hover {
-      background: theme.$tile-button-bg-color-hover;
+      background: $action-color;
+      color: var(--tile-button-icon-hover-color);
     }
   }
 }

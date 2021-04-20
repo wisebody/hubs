@@ -1,24 +1,14 @@
 @use "../styles/theme.scss";
 
-:local(.search-icon) {
-  *[stroke=\#000] {
-    stroke: theme.$text1-color;
-  }
-
-  *[fill=\#000] {
-    fill: theme.$text1-color;
-  }
-}
-
 :local(.favorite-icon) {
   margin-right: 4px;
 
   *[stroke=\#000] {
-    stroke: theme.$favorite-color;
+    stroke: theme.$yellow;
   }
 
   *[fill=\#000] {
-    fill: theme.$favorite-color;
+    fill: theme.$yellow;
   }
 }
 
@@ -27,7 +17,7 @@
   padding: 8px;
   overflow-x: auto;
   flex-shrink: 0;
-  border-bottom: 1px solid theme.$border1-color;
+  border-bottom: 1px solid theme.$lightgrey;
 }
 
 :local(.button-nav) > * {
@@ -39,7 +29,7 @@
 }
 
 :local(.facets-nav) {
-  background-color: theme.$background2-color;
+  background-color: theme.$recessed-bg;
 }
 
 :local(.content) {
@@ -59,7 +49,7 @@
 :local(.pager-button) {
   border: none;
   border-radius: 24px;
-  background-color: theme.$primary-color;
+  background-color: theme.$blue;
   height: 48px;
   width: 48px;
   margin: 32px;
@@ -69,33 +59,34 @@
 
   svg {
     *[stroke=\#000] {
-      stroke: theme.$text5-color;
+      stroke: theme.$white;
     }
 
     *[fill=\#000] {
-      fill: theme.$text5-color;
+      fill: theme.$white;
     }
   }
 
   &:hover {
-    background-color: theme.$primary-color-hover;
+    background-color: theme.$blue-hover;
   }
 
   &:active {
-    background-color: theme.$primary-color-pressed;
+    background-color: theme.$blue-pressed;
   }
 
   &:disabled {
+    color: theme.$grey;
     cursor: not-allowed;
-    background-color: theme.$disabled-bg-color;
+    background-color: theme.$lightgrey;
 
     svg {
       *[stroke=\#000] {
-        stroke: theme.$disabled-icon-color;
+        stroke: theme.$grey;
       }
   
       *[fill=\#000] {
-        fill: theme.$disabled-icon-color;
+        fill: theme.$grey;
       }
     }
   }

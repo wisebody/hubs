@@ -75,18 +75,8 @@ function TrackStatsPanel({ title, data, xAxis, yAxis, stats }) {
     id: data.id,
     opened: data.opened,
     paused: data.paused,
-    kind: data.kind,
-    codec: data.codec
+    kind: data.kind
   };
-  if (data.kind === "video") {
-    (data.spatialLayer !== undefined || data.temporalLayer !== undefined) &&
-      (props["currentLayers"] = `S[${data.spatialLayer}] T[${data.temporalLayer}]`);
-    data.score != undefined &&
-      (props["score"] = `S[${data.score?.score}] P[${data.score?.producerScore}][${data.score?.producerScores}]`);
-    data.frameRate != undefined && (props["frameRate"] = `${data.frameRate}`);
-    data.width != undefined && (props["width"] = `${data.width}`);
-    data.height != undefined && (props["height"] = `${data.height}`);
-  }
 
   const backgroundColor = !data.opened || !stats?.speed ? ERROR_COLOR : null;
   return (
@@ -132,7 +122,7 @@ function TransportPanel({ title, data, candidates, producers, consumers, isButto
   const backgroundColor = error ? ERROR_COLOR : null;
   return (
     <CollapsiblePanel key={title} title={title} border url={`${MEDIASOUP_DOC_BASE_URL}#Transport`} data={data}>
-      <PanelMessageButton onClick={onRestart} disabled={!isButtonEnabled} preset="accept">
+      <PanelMessageButton onClick={onRestart} disabled={!isButtonEnabled} preset={"green"}>
         <FormattedMessage id="rtc-debug-panel.restart-ice-button" defaultMessage="Restart ICE" />
       </PanelMessageButton>
       <CollapsiblePanel
@@ -194,7 +184,7 @@ function SignalingPanel({ data, onConnect, onDisconnect }) {
           }
         }}
         disabled={false}
-        preset="accept"
+        preset={"green"}
       >
         {data.connected ? (
           <FormattedMessage id="rtc-debug-panel.disconnect-signaling-button" defaultMessage="Disconnect" />
@@ -258,17 +248,13 @@ export default class RtcDebugPanel extends Component {
   };
 
   getDeviceData() {
-    let result = {};
+    const result = {};
     const device = NAF.connection.adapter._mediasoupDevice;
     if (device) {
       result["loaded"] = !device._closed ? true : false;
       result["codecs"] = device._recvRtpCapabilities?.codecs.map(
         codec => "[" + codec.mimeType + "/" + codec.clockRate + "]"
       );
-      result = {
-        ...result,
-        ...NAF.connection.adapter.downlinkBwe
-      };
     }
     return result;
   }
@@ -357,16 +343,8 @@ export default class RtcDebugPanel extends Component {
       result["paused"] = peer._paused;
       result["track"] = this.getTrackData(peer);
       result["kind"] = peer._kind || result["track"].kind;
-      result["codec"] = peer.rtpParameters.codecs[0].mimeType.split("/")[1];
       result["name"] = profile ? profile.displayName : "N/A";
       result["peerId"] = peer._appData.peerId;
-
-      const stats = NAF.connection.adapter.consumerStats[peer._id];
-      if (result["kind"] === "video" && stats) {
-        result["spatialLayer"] = stats["spatialLayer"];
-        result["temporalLayer"] = stats["temporalLayer"];
-        result["score"] = stats["score"];
-      }
     }
     return result;
   }
@@ -495,21 +473,9 @@ export default class RtcDebugPanel extends Component {
               statsData[id]["last"] = lastStats;
               statsData[id]["rtpStats"] = rtpStatsData;
             }
-            if (NAF.connection.adapter._cameraProducer) {
-              const id = NAF.connection.adapter._cameraProducer.id;
-              const peer = NAF.connection.adapter._cameraProducer;
-              const speedData = this.getPeerSpeed(id, "bytesSent");
-              const rtpStatsData = await this.getRtpStatsData(peer, StatsType.OUTBOUND_RTP);
-              const { lastStats, graphData } = this.getGraphData(id, rtpStatsData);
-              statsData[id] = {};
-              statsData[id]["speed"] = speedData;
-              statsData[id]["graph"] = graphData;
-              statsData[id]["last"] = lastStats;
-              statsData[id]["rtpStats"] = rtpStatsData;
-            }
-            if (NAF.connection.adapter._shareProducer) {
-              const id = NAF.connection.adapter._shareProducer.id;
-              const peer = NAF.connection.adapter._shareProducer;
+            if (NAF.connection.adapter._videoProducer) {
+              const id = NAF.connection.adapter._videoProducer.id;
+              const peer = NAF.connection.adapter._videoProducer;
               const speedData = this.getPeerSpeed(id, "bytesSent");
               const rtpStatsData = await this.getRtpStatsData(peer, StatsType.OUTBOUND_RTP);
               const { lastStats, graphData } = this.getGraphData(id, rtpStatsData);

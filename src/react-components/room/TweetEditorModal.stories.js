@@ -6,7 +6,7 @@ import imgSrc from "../../assets/background.jpg";
 import videoSrc from "../../assets/video/home.mp4";
 
 export default {
-  title: "Room/TweetEditorModal",
+  title: "TweetEditorModal",
   parameters: {
     layout: "fullscreen"
   }

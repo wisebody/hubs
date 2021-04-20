@@ -6,7 +6,9 @@ import configs from "../utils/configs";
 import IfFeature from "./if-feature";
 import styles from "../assets/stylesheets/scene-ui.scss";
 import { createAndRedirectToNewHub, getReticulumFetchUrl } from "../utils/phoenix-utils";
+import CreateRoomDialog from "./create-room-dialog.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
 import { faCodeBranch } from "@fortawesome/free-solid-svg-icons/faCodeBranch";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons/faPencilAlt";
 
@@ -29,7 +31,8 @@ class SceneUI extends Component {
   };
 
   state = {
-    showScreenshot: false
+    showScreenshot: false,
+    showCustomRoomDialog: false
   };
 
   constructor(props) {
@@ -52,7 +55,7 @@ class SceneUI extends Component {
   }
 
   createRoom = () => {
-    createAndRedirectToNewHub(undefined, this.props.sceneId);
+    createAndRedirectToNewHub(this.state.customRoomName, this.props.sceneId);
   };
 
   render() {
@@ -233,6 +236,9 @@ class SceneUI extends Component {
                 <button className={styles.createButton} onClick={this.createRoom}>
                   <FormattedMessage id="scene-page.create-button" defaultMessage="Create a room with this scene" />
                 </button>
+                <button className={styles.optionsButton} onClick={() => this.setState({ showCustomRoomDialog: true })}>
+                  <FontAwesomeIcon icon={faEllipsisH} />
+                </button>
               </div>
             )}
             <IfFeature name="enable_spoke">
@@ -297,6 +303,15 @@ class SceneUI extends Component {
             </div>
           </div>
         </IfFeature>
+        {this.state.showCustomRoomDialog && (
+          <CreateRoomDialog
+            includeScenePrompt={false}
+            onClose={() => this.setState({ showCustomRoomDialog: false })}
+            onCustomScene={name => {
+              this.setState({ showCustomRoomDialog: false, customRoomName: name }, () => this.createRoom());
+            }}
+          />
+        )}
       </div>
     );
   }

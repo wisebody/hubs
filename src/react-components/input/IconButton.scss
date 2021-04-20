@@ -10,16 +10,6 @@
   font-weight: theme.$font-weight-bold;
   cursor: pointer;
 
-  svg {
-    *[stroke=\#000] {
-      stroke: theme.$text1-color;
-    }
-
-    *[fill=\#000] {
-      fill: theme.$text1-color;
-    }
-  }
-
   & > * {
     margin-right: 4px;
 
@@ -29,29 +19,29 @@
   }
 
   &:hover {
-    color: theme.$primary-color-hover;
+    color: theme.$blue-hover;
 
     svg {
       *[stroke=\#000] {
-        stroke: theme.$primary-color-hover;
+        stroke: theme.$blue-hover;
       }
   
       *[fill=\#000] {
-        fill: theme.$primary-color-hover;
+        fill: theme.$blue-hover;
       }
     }
   }
 
   &:active {
-    color: theme.$primary-color-pressed;
+    color: theme.$blue-pressed;
 
     svg {
       *[stroke=\#000] {
-        stroke: theme.$primary-color-pressed;
+        stroke: theme.$blue-pressed;
       }
   
       *[fill=\#000] {
-        fill: theme.$primary-color-pressed;
+        fill: theme.$blue-pressed;
       }
     }
   }
@@ -61,16 +51,16 @@
   }
 
   &:disabled {
-    color: theme.$disabled-icon-color;
+    color: theme.$grey;
     cursor: not-allowed;
 
     svg {
       *[stroke=\#000] {
-        stroke: theme.$disabled-icon-color;
+        stroke: theme.$grey;
       }
   
       *[fill=\#000] {
-        fill: theme.$disabled-icon-color;
+        fill: theme.$grey;
       }
     }
   }
@@ -107,7 +97,7 @@
   }
 
   :global(.keyboard-user) &:focus-within {
-    box-shadow: 0 0 0 2px theme.$outline-color;
+    box-shadow: 0 0 0 2px theme.$black;
   }
 }
 

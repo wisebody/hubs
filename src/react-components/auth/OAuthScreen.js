@@ -34,7 +34,7 @@ export function OAuthScreen({ provider, redirectUrl, termsUrl, privacyUrl, ...re
               <LegalMessage termsUrl={termsUrl} privacyUrl={privacyUrl} />
             </small>
           </p>
-          <Button as="a" href={redirectUrl} preset={provider === "discord" ? "accent5" : "accent4"}>
+          <Button as="a" href={redirectUrl} preset={provider === "discord" ? "purple" : "blue"}>
             <FormattedMessage
               id="oauth-screen.sign-in-button"
               defaultMessage="Sign Into {provider}"

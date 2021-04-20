@@ -1,4 +1,3 @@
-@use "../../react-components/styles/theme.scss";
 @import 'shared.scss';
 
 :local(.presence-log) {
@@ -23,8 +22,8 @@
     -webkit-user-select: text;
     -ms-user-select: text;
 
-    background-color: theme.$overlay-bg-color;
-    color: theme.$overlay-text-color;
+    background-color: var(--lobby-overlay-widget-background-color);
+    color: var(--lobby-overlay-widget-text-color);
     margin-bottom: 8px;
     font-size: 0.8em;
     padding: 8px 16px;
@@ -77,7 +76,7 @@
     }
 
     a {
-      color: theme.$link-color;
+      color: $action-label-color;
     }
 
     :local(.icon-button) {
@@ -102,7 +101,7 @@
 
       &:hover {
         @media (pointer: fine) {
-          background-color: theme.$primary-color;
+          background-color: $action-color;
         }
       }
     }
@@ -129,7 +128,7 @@
       img {
         height: 35px;
         margin-left: 8px;
-        border: 2px solid theme.$overlay-border-color;
+        border: 2px solid var(--lobby-overlay-widget-thumbnail-border-color);
         display: block;
         border-radius: 5px;
       }
@@ -154,8 +153,8 @@
   bottom: 20px;
 
   :local(.presence-log-entry) {
-    background-color: theme.$overlay-bg-color;
-    color: theme.$overlay-text-color;
+    background-color: var(--hud-panel-background);
+    color: var(--hud-panel-text-color);
     min-height: 18px;
 
     // If this is selectable, tap holding on mobile anywhere on the screen will result
@@ -166,7 +165,7 @@
     -ms-user-select: none;
 
     a {
-      color: theme.$link-color;
+      color: var(--hud-panel-link-color);
     }
   }
 }
@@ -179,8 +178,8 @@
   margin: 0;
 
   :local(.presence-log-entry) {
-    background-color: black;
-    color: white;
+    background-color: var(--spawned-overlay-widget-background-color);
+    color: var(--spawned-overlay-widget-text-color);
     min-height: 18px;
     padding: 8px 16px;
     border-radius: 16px;
@@ -193,7 +192,7 @@
     }
 
     a {
-      color: white;
+      color: var(--spawned-overlay-widget-link-color);
     }
   }
 
@@ -217,7 +216,7 @@
     font-weight: normal;
     font-size: 0.7em;
     white-space: nowrap;
-    color: white;
+    color: var(--spawned-overlay-widget-source-text-color);
   }
 
   :local(.message-source-link) {

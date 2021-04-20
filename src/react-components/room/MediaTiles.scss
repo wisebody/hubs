@@ -13,7 +13,7 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  background-color: theme.$tile-bg-color;
+  background-color: theme.$lightgrey;
   border-radius: 12px;
 
   img, video, :local(.create-tile-content) {
@@ -24,11 +24,11 @@
   }
 
   &:hover {
-    background-color: theme.$tile-bg-color-hover;
+    background-color: theme.$lightgrey-hover;
   }
 
   &:active {
-    background-color: theme.$tile-bg-color-pressed;
+    background-color: theme.$lightgrey-pressed;
   }
 }
 
@@ -72,35 +72,25 @@
 }
 
 :local(.tile-action), :local(.member-count) {
-  background: theme.$tile-button-bg-color;
-  color: theme.$tile-button-text-color;
+  background: theme.$white;
+  color: theme.$black;
   height: 30px;
   border-radius: 30px;
   padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid theme.$tile-button-border-color;
-
-  svg {
-    *[stroke=\#000] {
-      stroke: theme.$tile-button-text-color;
-    }
-
-    *[fill=\#000] {
-      fill: theme.$tile-button-text-color;
-    }
-  }
+  border: none;
 }
 
 :local(.tile-action) {
   &:hover {
-    background-color: theme.$tile-button-bg-color-hover;
+    background-color: theme.$white-hover;
     color: white;
   }
 
   &:active {
-    background-color: theme.$tile-button-bg-color-pressed;
+    background-color: theme.$white-hover;
   }
 }
 
@@ -120,17 +110,17 @@
   left: 8px;
 
   *[stroke=\#000] {
-    stroke: theme.$favorite-color;
+    stroke: theme.$yellow;
   }
 
   *[fill=\#000] {
-    fill: theme.$favorite-color;
+    fill: theme.$yellow;
   }
 }
 
 :local(.info) {
   margin-top: 8px;
-  color: theme.$text1-color;
+  color: theme.$black;
 
   & > * {
     white-space: nowrap;
@@ -162,30 +152,30 @@
 
   a svg {
     *[stroke=\#000] {
-      stroke: theme.$link-color;
+      stroke: theme.$blue;
     }
   
     *[fill=\#000] {
-      fill: theme.$link-color;
+      fill: theme.$blue;
     }
 
     &:hover {
       *[stroke=\#000] {
-        stroke: theme.$link-color-hover;
+        stroke: theme.$blue-hover;
       }
     
       *[fill=\#000] {
-        fill: theme.$link-color-hover;
+        fill: theme.$blue-hover;
       }
     }
 
     &:active {
       *[stroke=\#000] {
-        stroke: theme.$link-color-pressed;
+        stroke: theme.$blue-pressed;
       }
     
       *[fill=\#000] {
-        fill: theme.$link-color-pressed;
+        fill: theme.$blue-pressed;
       }
     }
   }
@@ -201,7 +191,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: theme.$tile-text-color;
+  color: theme.$darkgrey;
   font-weight: theme.$font-weight-bold;
   border-radius: 12px;
   flex: 1;
@@ -214,11 +204,11 @@
     margin-bottom: 16px;
 
     *[stroke=\#000] {
-      stroke: theme.$tile-text-color;
+      stroke: theme.$darkgrey;
     }
 
     *[fill=\#000] {
-      fill: theme.$tile-text-color;
+      fill: theme.$darkgrey;
     }
   }
 }

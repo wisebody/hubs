@@ -3,7 +3,7 @@ import { RoomLayout } from "../layout/RoomLayout";
 import { LeaveReason, LeaveRoomModal } from "./LeaveRoomModal";
 
 export default {
-  title: "Room/LeaveRoomModal",
+  title: "LeaveRoomModal",
   parameters: {
     layout: "fullscreen"
   },

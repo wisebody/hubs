@@ -7,38 +7,25 @@ import {
   ChatMessageList,
   ChatInput,
   SpawnMessageButton,
-  MessageAttachmentButton,
-  EmojiPickerPopoverButton
+  MessageAttachmentButton
 } from "./ChatSidebar";
 import imgSrc from "../../assets/background.jpg";
 import videoSrc from "../../assets/video/home.mp4";
 
 export default {
-  title: "Room/ChatSidebar",
-  parameters: {
-    layout: "fullscreen"
-  }
+  title: "ChatSidebar"
 };
-
-const nextTimestamp = (function() {
-  const now = Date.now();
-  let time = now - 8 * 60 * 60 * 1000;
-  return function nextTimeStamp() {
-    time = time + (now - time) / 2.0;
-    return time;
-  };
-})();
 
 export const Base = () => (
   <RoomLayout
     sidebar={
       <ChatSidebar>
         <ChatMessageList>
-          <SystemMessage type="join" presence="room" name="Robert" timestamp={nextTimestamp()} />
-          <SystemMessage type="join" presence="room" name="Dom" timestamp={nextTimestamp()} />
+          <SystemMessage type="log" body="Robert joined the room" timestamp={Date.now()} />
+          <SystemMessage type="log" body="Dom joined the room" timestamp={Date.now()} />
           <ChatMessageGroup
             sender="Dom"
-            timestamp={nextTimestamp()}
+            timestamp={Date.now()}
             messages={[
               { type: "chat", body: "Hello!" },
               { type: "chat", body: "This is a really long message that should cause a new line." },
@@ -48,7 +35,7 @@ export const Base = () => (
           <ChatMessageGroup
             sent
             sender="Robert"
-            timestamp={nextTimestamp()}
+            timestamp={Date.now()}
             messages={[
               { type: "chat", body: "Hello!" },
               { type: "chat", body: "This is a really long message that should cause a new line." },
@@ -57,28 +44,28 @@ export const Base = () => (
               { type: "chat", body: "One last message" }
             ]}
           />
-          <SystemMessage type="join" presence="room" name="John" timestamp={nextTimestamp()} />
+          <SystemMessage type="log" body="John joined the room" timestamp={Date.now()} />
           <ChatMessageGroup
             sender="John"
-            timestamp={nextTimestamp()}
+            timestamp={Date.now()}
             messages={[
               { type: "chat", body: "https://mozilla.org" },
               { type: "chat", body: "Test message with url. https://hubs.mozilla.com Best site :point_up:" },
               { type: "chat", body: ":thumbsup:" }
             ]}
           />
-          <SystemMessage type="join" presence="room" name="Liv" timestamp={nextTimestamp()} />
-          <SystemMessage type="join" presence="room" name="Robin" timestamp={nextTimestamp()} />
-          <ChatMessageGroup sender="Liv" timestamp={nextTimestamp()} messages={[{ type: "chat", body: ":clap:" }]} />
+          <SystemMessage type="log" body="Liv joined the room" timestamp={Date.now()} />
+          <SystemMessage type="log" body="Robin joined the room" timestamp={Date.now()} />
+          <ChatMessageGroup sender="Liv" timestamp={Date.now()} messages={[{ type: "chat", body: ":clap:" }]} />
           <ChatMessageGroup
             sender="Robin"
-            timestamp={nextTimestamp()}
+            timestamp={Date.now()}
             messages={[{ type: "chat", body: '`console.log("Hello World")`' }]}
           />
           <ChatMessageGroup
             sent
             sender="Robert"
-            timestamp={nextTimestamp()}
+            timestamp={Date.now()}
             messages={[
               { type: "chat", body: "https://mozilla.org" },
               { type: "chat", body: "Test message with url. https://hubs.mozilla.com" }
@@ -88,7 +75,6 @@ export const Base = () => (
         <ChatInput
           afterInput={
             <>
-              <EmojiPickerPopoverButton onSelectEmoji={emoji => console.log(emoji)} />
               <MessageAttachmentButton />
               <SpawnMessageButton />
             </>
@@ -98,3 +84,7 @@ export const Base = () => (
     }
   />
 );
+
+Base.parameters = {
+  layout: "fullscreen"
+};

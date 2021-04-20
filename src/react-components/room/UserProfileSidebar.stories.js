@@ -3,7 +3,7 @@ import { RoomLayout } from "../layout/RoomLayout";
 import { UserProfileSidebar } from "./UserProfileSidebar";
 
 export default {
-  title: "Room/UserProfileSidebar",
+  title: "UserProfileSidebar",
   parameters: {
     layout: "fullscreen"
   }

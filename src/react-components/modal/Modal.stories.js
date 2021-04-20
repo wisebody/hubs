@@ -5,10 +5,7 @@ import { RoomLayout } from "../layout/RoomLayout";
 import { Modal } from "./Modal";
 
 export default {
-  title: "Modal/Modal",
-  parameters: {
-    layout: "fullscreen"
-  }
+  title: "Modal"
 };
 
 export const Base = () => (

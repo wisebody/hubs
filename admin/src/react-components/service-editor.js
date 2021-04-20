@@ -133,8 +133,7 @@ class ConfigurationEditor extends Component {
       category: this.firstAvailableCategory(),
       saving: false,
       saved: false,
-      saveError: null,
-      warningMessage: null
+      saveError: null
     };
   }
 
@@ -225,17 +224,6 @@ class ConfigurationEditor extends Component {
 
   renderLongTextInput(path, descriptor, currentValue) {
     const displayPath = path.join(" > ");
-
-    function isValidJSON(s) {
-      try {
-        JSON.parse(s);
-        return true;
-      } catch (error) {
-        console.error(error);
-        return false;
-      }
-    }
-
     return (
       <TextField
         key={displayPath}
@@ -243,30 +231,7 @@ class ConfigurationEditor extends Component {
         label={descriptor.name || displayPath}
         inputProps={{ maxLength: 4096 }}
         value={currentValue || ""}
-        onChange={ev => {
-          if (descriptor.type === "json") {
-            if (!isValidJSON(ev.target.value)) {
-              const warningMessage = `Invalid JSON for ${descriptor.name || displayPath}. See console for details.`;
-              if (this.state.warningMessage !== warningMessage) {
-                this.setState({ warningMessage });
-              }
-              console.error(`Invalid JSON for ${descriptor.name || displayPath}.`);
-              console.error(ev.target.value);
-            } else {
-              if (this.state.warningMessage !== null) {
-                this.setState({ warningMessage: null });
-              }
-            }
-          }
-          this.onChange(path, ev.target.value);
-        }}
-        onBlur={ev => {
-          if (descriptor.type === "json" && isValidJSON(ev.target.value)) {
-            // Pretty print json strings
-            const pretty = JSON.stringify(JSON.parse(ev.target.value), null, 2);
-            this.onChange(path, pretty);
-          }
-        }}
+        onChange={ev => this.onChange(path, ev.target.value)}
         helperText={descriptor.description}
         type="text"
         fullWidth
@@ -347,7 +312,6 @@ class ConfigurationEditor extends Component {
       case "color":
         return this.renderColorInput(path, descriptor, currentValue);
       case "longstring":
-      case "json":
         return this.renderLongTextInput(path, descriptor, currentValue);
       case "string":
       case "number":
@@ -359,7 +323,6 @@ class ConfigurationEditor extends Component {
   renderTree(schema, category, config) {
     const configurables = getDescriptors(schema[category])
       .filter(([, descriptor]) => qs.get("show_internal_configs") !== null || descriptor.internal !== "true")
-      .filter(([, descriptor]) => qs.get("show_deprecated_configs") !== null || descriptor.deprecated !== "true")
       .map(([path, descriptor]) => this.renderConfigurable(path, descriptor, getConfigValue(config, path)));
 
     return (
@@ -414,29 +377,23 @@ class ConfigurationEditor extends Component {
         </CardContent>
         <Snackbar
           anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
-          open={this.state.saved || !!this.state.saveError || !!this.state.warningMessage}
+          open={this.state.saved || !!this.state.saveError}
           autoHideDuration={10000}
-          onClose={() => {
-            this.setState({ saved: false, saveError: null, warningMessage: null });
-          }}
+          onClose={() => this.setState({ saved: false, saveError: null })}
         >
           <SnackbarContent
             className={clsx({
-              [this.props.classes.success]: !this.state.saveError && !this.state.warningMessage,
-              [this.props.classes.warning]: !!this.state.saveError || !!this.state.warningMessage
+              [this.props.classes.success]: !this.state.saveError,
+              [this.props.classes.warning]: !!this.state.saveError
             })}
             message={
               <span id="import-snackbar" className={this.props.classes.message}>
                 <Icon className={clsx(this.props.classes.icon, this.props.classes.iconVariant)} />
-                {this.state.saveError || this.state.warningMessage || (this.state.saved && "Settings saved.") || ""}
+                {this.state.saveError || "Settings saved."}
               </span>
             }
             action={[
-              <IconButton
-                key="close"
-                color="inherit"
-                onClick={() => this.setState({ saved: false, warningMessage: null })}
-              >
+              <IconButton key="close" color="inherit" onClick={() => this.setState({ saved: false })}>
                 <CloseIcon className={this.props.classes.icon} />
               </IconButton>
             ]}

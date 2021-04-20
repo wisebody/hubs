@@ -3,7 +3,7 @@ import { RoomLayout } from "../layout/RoomLayout";
 import { InvitePopoverButton } from "./InvitePopover";
 
 export default {
-  title: "Room/InvitePopover",
+  title: "InvitePopover",
   parameters: {
     layout: "fullscreen"
   }

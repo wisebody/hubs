@@ -9,7 +9,7 @@ import { ObjectMenu, ObjectMenuButton } from "./ObjectMenu";
 import { Sidebar } from "../sidebar/Sidebar";
 
 export default {
-  title: "Room/ObjectMenu"
+  title: "ObjectMenu"
 };
 
 export const Base = () => (

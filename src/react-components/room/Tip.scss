@@ -5,10 +5,10 @@
   position: absolute;
   bottom: 4px;
   min-height: 48px;
-  background-color: theme.$tip-bg-color;
+  background-color: theme.$blue;
   border-radius: 16px;
   display: flex;
-  color: theme.$tip-text-color;
+  color: theme.$white;
   align-items: center;
   width: max-content;
   max-width: min(calc(100% - 8px), 360px);
@@ -37,7 +37,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid theme.$tip-button-color;
+  border: 1px solid theme.$blue-pressed;
   margin-right: 8px;
   margin-bottom: 8px;
   min-width: 48px;
@@ -46,12 +46,12 @@
   align-self: flex-end;
 
   &:hover {
-    border-color: theme.$tip-button-color-hover;
-    background-color: theme.$tip-button-color-hover;
+    border-color: theme.$blue-hover;
+    background-color: theme.$blue-hover;
   }
 
   &:active {
-    border-color: theme.$tip-button-color-pressed;
-    background-color: theme.$tip-button-color-pressed;
+    border-color: theme.$blue-pressed;
+    background-color: theme.$blue-pressed;
   }
 }

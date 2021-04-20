@@ -9,8 +9,7 @@ import {
   MessageAttachmentButton,
   SpawnMessageButton,
   ChatToolbarButton,
-  SendMessageButton,
-  EmojiPickerPopoverButton
+  SendMessageButton
 } from "./ChatSidebar";
 import { useMaintainScrollPosition } from "../misc/useMaintainScrollPosition";
 import { spawnChatMessage } from "../chat-message";
@@ -249,7 +248,6 @@ export function ChatSidebarContainer({ scene, canSpawnMessages, presences, occup
     }
   }
 
-  const isMobile = AFRAME.utils.device.isMobile();
   return (
     <ChatSidebar onClose={onClose}>
       <ChatMessageList ref={listRef} onScroll={onScrollList}>
@@ -269,9 +267,6 @@ export function ChatSidebarContainer({ scene, canSpawnMessages, presences, occup
         value={message}
         afterInput={
           <>
-            {!isMobile && (
-              <EmojiPickerPopoverButton onSelectEmoji={emoji => setMessage(message => message + emoji.native)} />
-            )}
             {message.length === 0 && canSpawnMessages ? (
               <MessageAttachmentButton onChange={onUploadAttachments} />
             ) : (
@@ -295,5 +290,5 @@ ChatSidebarContainer.propTypes = {
 
 export function ChatToolbarButtonContainer(props) {
   const { unreadMessages } = useContext(ChatContext);
-  return <ChatToolbarButton {...props} statusColor={unreadMessages ? "unread" : undefined} />;
+  return <ChatToolbarButton {...props} statusColor={unreadMessages ? "orange" : undefined} />;
 }

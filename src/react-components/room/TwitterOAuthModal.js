@@ -20,7 +20,7 @@ export function TwitterOAuthModal({ appName, onConnect, onClose }) {
             values={{ appName }}
           />
         </p>
-        <Button preset="accent4" onClick={onConnect}>
+        <Button preset="blue" onClick={onConnect}>
           <FormattedMessage id="twitter-oauth-modal.connect-button" defaultMessage="Connect to Twitter" />
         </Button>
       </Column>

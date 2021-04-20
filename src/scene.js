@@ -4,7 +4,6 @@ import "./utils/configs";
 
 console.log(`Hubs version: ${process.env.BUILD_VERSION || "?"}`);
 
-import "./react-components/styles/global.scss";
 import "./assets/stylesheets/scene.scss";
 
 import "aframe";
@@ -40,21 +39,18 @@ import "./components/event-repeater";
 
 import registerTelemetry from "./telemetry";
 import { WrappedIntlProvider } from "./react-components/wrapped-intl-provider";
-import { ThemeProvider } from "./react-components/styles/theme";
 
 disableiOSZoom();
 
 function mountUI(scene, props = {}) {
   ReactDOM.render(
     <WrappedIntlProvider>
-      <ThemeProvider store={window.APP.store}>
-        <SceneUI
-          {...{
-            scene,
-            ...props
-          }}
-        />
-      </ThemeProvider>
+      <SceneUI
+        {...{
+          scene,
+          ...props
+        }}
+      />
     </WrappedIntlProvider>,
     document.getElementById("ui-root")
   );

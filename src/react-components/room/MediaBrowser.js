@@ -78,7 +78,7 @@ export function MediaBrowser({
               ref={searchInputRef}
               placeholder={searchPlaceholder}
               onKeyDown={onSearchKeyDown}
-              beforeInput={<SearchIcon className={styles.searchIcon} />}
+              beforeInput={<SearchIcon />}
               afterInput={
                 <IconButton onClick={onClearSearch}>
                   <CloseIcon height={16} width={16} />
@@ -97,7 +97,7 @@ export function MediaBrowser({
             <Button
               sm
               key={source}
-              preset={selectedSource === source ? "primary" : "transparent"}
+              preset={selectedSource === source ? "blue" : "transparent"}
               onClick={() => onSelectSource(source)}
             >
               {intl.formatMessage(navTitleMessages[source])}
@@ -111,7 +111,7 @@ export function MediaBrowser({
             <Button
               sm
               key={i}
-              preset={activeFilter === facet.params.filter ? "primary" : "transparent"}
+              preset={activeFilter === facet.params.filter ? "blue" : "transparent"}
               onClick={() => onSelectFacet(facet)}
             >
               {facet.text}

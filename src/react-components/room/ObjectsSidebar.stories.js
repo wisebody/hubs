@@ -3,10 +3,7 @@ import { RoomLayout } from "../layout/RoomLayout";
 import { ObjectsSidebar, ObjectsSidebarItem, NoObjects } from "./ObjectsSidebar";
 
 export default {
-  title: "Room/ObjectsSidebar",
-  parameters: {
-    layout: "fullscreen"
-  }
+  title: "ObjectsSidebar"
 };
 
 const objects = [
@@ -51,6 +48,10 @@ export const Base = () => (
   />
 );
 
+Base.parameters = {
+  layout: "fullscreen"
+};
+
 export const Empty = () => (
   <RoomLayout
     sidebar={
@@ -61,6 +62,10 @@ export const Empty = () => (
   />
 );
 
+Empty.parameters = {
+  layout: "fullscreen"
+};
+
 export const EmptyWithAddObjectsPerms = () => (
   <RoomLayout
     sidebar={
@@ -70,3 +75,7 @@ export const EmptyWithAddObjectsPerms = () => (
     }
   />
 );
+
+EmptyWithAddObjectsPerms.parameters = {
+  layout: "fullscreen"
+};

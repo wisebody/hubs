@@ -4,10 +4,7 @@ import { RoomLayout } from "../layout/RoomLayout";
 import { ContentMenu, PeopleMenuButton, ObjectsMenuButton } from "./ContentMenu";
 
 export default {
-  title: "Room/ContentMenu",
-  parameters: {
-    layout: "fullscreen"
-  }
+  title: "ContentMenu"
 };
 
 export const Base = () => (
@@ -21,6 +18,10 @@ export const Base = () => (
   />
 );
 
+Base.parameters = {
+  layout: "fullscreen"
+};
+
 export const Active = () => (
   <RoomLayout
     viewport={
@@ -32,6 +33,10 @@ export const Active = () => (
   />
 );
 
+Active.parameters = {
+  layout: "fullscreen"
+};
+
 export const OnlyPeople = () => (
   <RoomLayout
     viewport={
@@ -41,3 +46,7 @@ export const OnlyPeople = () => (
     }
   />
 );
+
+OnlyPeople.parameters = {
+  layout: "fullscreen"
+};

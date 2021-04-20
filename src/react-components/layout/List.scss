@@ -25,37 +25,37 @@
   width: 100%;
 
   &:hover {
-    background-color: theme.$list-bg-color-hover;
+    background-color: theme.$white-hover;
   }
 
   &:active {
-    background-color: theme.$list-bg-color-pressed;
+    background-color: theme.$white-pressed;
   }
 
   :global(body.keyboard-user) &:focus {
-    box-shadow: inset 0 0 0 3px theme.$outline-color;
+    box-shadow: inset 0 0 0 3px theme.$black;
   }
 
   &:local(.selected) {
-    color: theme.$active-text-color;
-    background-color: theme.$active-color;
+    color: theme.$white;
+    background-color: theme.$blue;
 
     svg {
       *[stroke=\#000] {
-        stroke: theme.$active-text-color;
+        stroke: theme.$white;
       }
   
       *[fill=\#000] {
-        fill: theme.$active-text-color;
+        fill: theme.$white;
       }
     }
 
     &:hover {
-      background-color: theme.$active-color-hover;
+      background-color: theme.$blue-hover;
     }
   
     &:active {
-      background-color: theme.$active-color-pressed;
+      background-color: theme.$blue-pressed;
     }
   }
 }

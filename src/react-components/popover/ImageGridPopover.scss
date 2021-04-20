@@ -17,11 +17,11 @@
     border-radius: 6px;
 
     &:hover {
-      background-color: theme.$list-bg-color-hover;
+      background-color: theme.$white-hover;
     }
 
     &:active {
-      background-color: theme.$list-bg-color-pressed;
+      background-color: theme.$white-pressed;
     }
   }
 }

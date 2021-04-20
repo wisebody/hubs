@@ -2,7 +2,7 @@
 
 :local(.label) {
   margin-bottom: 8px;
-  color: theme.$text3-color;
+  color: theme.$grey;
   align-self: flex-start;
 }
 
@@ -19,12 +19,12 @@
 
 :local(.error) {
   margin-top: 8px;
-  color: theme.$error-color;
+  color: theme.$red;
   align-self: flex-start;
 }
 
 :local(.info) {
   margin-top: 8px;
-  color: theme.$text3-color;
+  color: theme.$grey;
   align-self: flex-start;
 }

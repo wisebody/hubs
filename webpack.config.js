@@ -132,14 +132,6 @@ function createDefaultAppConfig() {
     }
   }
 
-  const themesPath = path.join(__dirname, "themes.json");
-
-  if (fs.existsSync(themesPath)) {
-    const themesString = fs.readFileSync(themesPath).toString();
-    const themes = JSON.parse(themesString);
-    appConfig.themes = themes;
-  }
-
   return appConfig;
 }
 
@@ -374,17 +366,6 @@ module.exports = async (env, argv) => {
           ],
           loader: "babel-loader",
           options: legacyBabelConfig
-        },
-        // Some JS assets are loaded at runtime and should be coppied unmodified and loaded using file-loader
-        {
-          test: [
-            path.resolve(__dirname, "node_modules", "three", "examples", "js", "libs", "basis", "basis_transcoder.js")
-          ],
-          loader: "file-loader",
-          options: {
-            outputPath: "assets/raw-js",
-            name: "[name]-[hash].[ext]"
-          }
         },
         {
           test: /\.js$/,
