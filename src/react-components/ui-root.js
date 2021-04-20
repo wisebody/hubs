@@ -789,16 +789,13 @@ class UIRoot extends Component {
             if (promptForNameAndAvatarBeforeEntry || !this.props.forcedVREntryType) {
               this.setState({ entering: true });
               this.props.hubChannel.sendEnteringEvent();
-              /*
+
               if (promptForNameAndAvatarBeforeEntry) {
                 this.pushHistoryState("entry_step", "profile");
               } else {
                 this.onRequestMicPermission();
                 this.pushHistoryState("entry_step", "mic_grant");
               }
-              */
-
-              this.pushHistoryState("entry_step", "profile");
             } else {
               this.handleForceEntry();
             }
