@@ -33,7 +33,7 @@ export function MicPermissionsModal({ className, error, onClickErrorButton, erro
         {error && (
           <>
             <small className={styles.error}>{error}</small>
-            <Button preset="blue" onClick={onClickErrorButton}>
+            <Button preset="primary" onClick={onClickErrorButton}>
               {errorButtonLabel}
             </Button>
           </>

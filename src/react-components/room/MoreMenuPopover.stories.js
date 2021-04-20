@@ -9,7 +9,10 @@ import { ReactComponent as HomeIcon } from "../icons/Home.svg";
 import { CompactMoreMenuButton, MoreMenuContextProvider, MoreMenuPopoverButton } from "./MoreMenuPopover";
 
 export default {
-  title: "MoreMenuPopover"
+  title: "Room/MoreMenuPopover",
+  parameters: {
+    layout: "fullscreen"
+  }
 };
 
 const menu = [
@@ -38,7 +41,3 @@ export const Base = () => (
     <RoomLayout viewport={<CompactMoreMenuButton />} toolbarRight={<MoreMenuPopoverButton menu={menu} />} />
   </MoreMenuContextProvider>
 );
-
-Base.parameters = {
-  layout: "fullscreen"
-};

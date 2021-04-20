@@ -6,6 +6,8 @@ import "@babel/polyfill";
 
 console.log(`App version: ${process.env.BUILD_VERSION || "?"}`);
 
+import "./react-components/styles/global.scss";
+import "./assets/stylesheets/globals.scss";
 import "./assets/stylesheets/hub.scss";
 import initialBatchImage from "./assets/images/warning_icon.png";
 import loadingEnvironment from "./assets/models/LoadingEnvironment.glb";
@@ -221,6 +223,7 @@ import { WrappedIntlProvider } from "./react-components/wrapped-intl-provider";
 import { ExitReason } from "./react-components/room/ExitedRoomScreen";
 import { OAuthScreenContainer } from "./react-components/auth/OAuthScreenContainer";
 import { SignInMessages } from "./react-components/auth/SignInModal";
+import { ThemeProvider } from "./react-components/styles/theme";
 
 const PHOENIX_RELIABLE_NAF = "phx-reliable";
 NAF.options.firstSyncSource = PHOENIX_RELIABLE_NAF;
@@ -294,30 +297,32 @@ function mountUI(props = {}) {
 
   ReactDOM.render(
     <WrappedIntlProvider>
-      <Router history={history}>
-        <Route
-          render={routeProps =>
-            props.showOAuthScreen ? (
-              <OAuthScreenContainer oauthInfo={props.oauthInfo} />
-            ) : props.roomUnavailableReason ? (
-              <ExitedRoomScreenContainer reason={props.roomUnavailableReason} />
-            ) : (
-              <UIRoot
-                {...{
-                  scene,
-                  isBotMode,
-                  disableAutoExitOnIdle,
-                  forcedVREntryType,
-                  store,
-                  mediaSearchStore,
-                  ...props,
-                  ...routeProps
-                }}
-              />
-            )
-          }
-        />
-      </Router>
+      <ThemeProvider store={store}>
+        <Router history={history}>
+          <Route
+            render={routeProps =>
+              props.showOAuthScreen ? (
+                <OAuthScreenContainer oauthInfo={props.oauthInfo} />
+              ) : props.roomUnavailableReason ? (
+                <ExitedRoomScreenContainer reason={props.roomUnavailableReason} />
+              ) : (
+                <UIRoot
+                  {...{
+                    scene,
+                    isBotMode,
+                    disableAutoExitOnIdle,
+                    forcedVREntryType,
+                    store,
+                    mediaSearchStore,
+                    ...props,
+                    ...routeProps
+                  }}
+                />
+              )
+            }
+          />
+        </Router>
+      </ThemeProvider>
     </WrappedIntlProvider>,
     document.getElementById("ui-root")
   );
@@ -683,7 +688,7 @@ async function runBotMode(scene, entryManager) {
   };
 
   while (!NAF.connection.isConnected()) await nextTick();
-  entryManager.enterSceneWhenLoaded(new MediaStream(), false);
+  entryManager.enterSceneWhenLoaded(false);
 }
 
 function checkForAccountRequired() {
@@ -786,7 +791,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const entryManager = new SceneEntryManager(hubChannel, authChannel, history);
 
   window.APP.scene = scene;
-  window.APP.mediaDevicesManager = new MediaDevicesManager(scene, store);
+  const audioSystem = scene.systems["hubs-systems"].audioSystem;
+  window.APP.mediaDevicesManager = new MediaDevicesManager(scene, store, audioSystem);
   window.APP.hubChannel = hubChannel;
 
   const performConditionalSignIn = async (predicate, action, signInMessage, onFailure) => {
