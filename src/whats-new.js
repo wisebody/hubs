@@ -18,6 +18,14 @@ import { Center } from "./react-components/layout/Center";
 
 registerTelemetry("/whats-new", "Hubs What's New");
 
+if (window.localStorage) {
+  window.localStorage.clear();
+  console.log("Cache Clear");
+  alert("캐시가 삭제되었습니다.");
+} else {
+  console.log("Cache Nothing");
+}
+
 function formatDate(value) {
   return value && new Date(value).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
 }
@@ -138,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <AuthContextProvider store={store}>
         <WhatsNew />
       </AuthContextProvider>
-    </WrappedIntlProvider>,
-    document.getElementById("ui-root")
+    </WrappedIntlProvider>
+    //document.getElementById("ui-root")
   );
 });
